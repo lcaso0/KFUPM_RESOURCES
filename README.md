@@ -1,32 +1,39 @@
-# KFUPM SSO Authentication with Clerk + Next.js
+# 📚 KFUPM Student Resource Hub
 
-This project demonstrates how to integrate **KFUPM's official sign-in page** (via Microsoft Azure AD) into a **Next.js** application using **Clerk** as the authentication layer.
-
-When a user attempts to sign in, they are redirected directly to KFUPM's Microsoft login page. Only emails with the `@kfupm.edu.sa` domain are allowed to authenticate.
-
----
+A platform for KFUPM students to **share, search, and access academic resources** in a structured and organized way — solving the chaos of scattered Telegram groups and unorganized cloud folders.
 
 ## 🚀 Features
 
-- **Official KFUPM Login** — Uses the same Microsoft SSO page students and staff use.
-- **Secure OAuth 2.0 / OIDC Integration** via Clerk.
-- **Domain Restriction** — Only `@kfupm.edu.sa` accounts can sign in.
-- **Next.js 14 App Router** + **Clerk** for session management.
-- **Automatic Redirect** — Skips Clerk’s default login screen and sends users straight to KFUPM login.
+- **📂 Course-based Resource Library**
+  - Upload notes, past papers, and assignments.
+  - Browse materials organized by course, semester, and professor.
+
+- **🔍 Smart Search & Filters**
+  - Search by course code, topic, or file type.
+  - Filter resources by rating, recency, or popularity.
+
+- **⭐ Resource Rating & Verification**
+  - Upvote/downvote to surface the most useful materials.
+  - Verified uploads by trusted contributors.
+
+- **📅 Academic Tools (Future)**
+  - Deadline reminders for assignments/exams.
+  - Personalized study recommendations.
+
+- **🛡️ Secure Access**
+  - Only KFUPM students can sign up (email verification).
+  - Role-based permissions for uploading and moderating.
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Tech Stack
 
-- [Next.js](https://nextjs.org/) — React framework with App Router.
-- [Clerk](https://clerk.com/) — Authentication and user management.
-- [Azure AD / Microsoft OAuth](https://learn.microsoft.com/en-us/azure/active-directory/develop/) — KFUPM’s identity provider.
+- **Frontend:** [Next.js App Router](https://nextjs.org/docs/app) + [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Auth:** [Clerk](https://clerk.com/) for authentication & user management
+- **Database:** [Supabase Postgres](https://supabase.com/) with [Drizzle ORM](https://orm.drizzle.team/) for type-safe queries
+- **Storage:** Supabase Storage (S3-compatible) for files/documents
 
 ---
 
-## 📦 Installation
+## 📦 Project Structure
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/kfupm-sso-nextjs.git
-cd kfupm-sso-nextjs
