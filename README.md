@@ -1,5 +1,7 @@
 # 📚 KFUPM Student Resource Hub
 
+![KFUPM](https://math.kfupm.edu.sa/images/default-source/default-album/b5-tower-hd36690806-d10e-4d28-87e2-f143d643a21e.tmb-banner.jpg?Culture=en&sfvrsn=2d78144e_2)
+
 A platform for KFUPM students to **share, search, and access academic resources** in a structured and organized way — solving the chaos of scattered Telegram groups and unorganized cloud folders.
 
 ## 🚀 Features
