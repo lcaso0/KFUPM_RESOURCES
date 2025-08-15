@@ -2,7 +2,7 @@
 
 ![KFUPM](https://mediacenter.kfupm.edu.sa/documents/50/LinkedIn_Banner_4.jpg)
 
-A platform for KFUPM students to **share, search, and access academic resources** in a structured and organized way — solving the chaos of scattered Telegram groups and unorganized cloud folders.
+==A platform for KFUPM students to **share, search, and access academic resources** in a structured and organized way — solving the chaos of scattered Telegram groups and unorganized cloud folders.==
 
 ## 🚀 Features
 
