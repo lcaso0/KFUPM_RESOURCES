@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Shield, Search, Download, Users, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -84,7 +84,7 @@ const Features = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
