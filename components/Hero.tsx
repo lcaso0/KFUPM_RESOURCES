@@ -140,7 +140,7 @@ const Hero = () => {
 
           {/* Stats */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 px-4"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 px-4 pb-4 md:pb-0"
             variants={containerVariants}
           >
             {[
