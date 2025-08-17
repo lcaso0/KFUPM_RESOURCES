@@ -57,7 +57,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-geometric-pattern opacity-5" />
 
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container pt-24 md:pt-0 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="max-w-5xl mx-auto text-center"
           variants={containerVariants}
