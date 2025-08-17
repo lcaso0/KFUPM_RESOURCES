@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Shield, Users } from "lucide-react";
-import { motion } from "framer-motion";
+import { easeInOut, easeOut, motion } from "framer-motion";
 
 const Hero = () => {
   const containerVariants = {
@@ -23,7 +23,7 @@ const Hero = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -34,7 +34,7 @@ const Hero = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: easeInOut
       }
     }
   };
