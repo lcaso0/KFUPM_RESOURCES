@@ -9,7 +9,7 @@ import { useRef } from "react";
 
 const Features = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true });
   const features = [
     {
       icon: <Shield className="w-8 h-8 text-primary" />,
