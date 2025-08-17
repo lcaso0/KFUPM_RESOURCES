@@ -48,13 +48,13 @@ html {
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
-  
+
   --background-image-gradient-primary: var(--gradient-primary);
   --background-image-gradient-secondary: var(--gradient-secondary);
   --background-image-gradient-hero: var(--gradient-hero);
   --background-image-gradient-subtle: var(--gradient-subtle);
   --background-image-geometric-pattern: var(--geometric-pattern);
-  
+
   --box-shadow-soft: var(--shadow-soft);
   --box-shadow-medium: var(--shadow-medium);
   --box-shadow-strong: var(--shadow-strong);
@@ -71,19 +71,19 @@ html {
   --card-foreground: 120 20% 15%;
   --popover: 0 0% 100%;
   --popover-foreground: 120 20% 15%;
-  
+
   /* KFUPM Green Primary */
   --primary: 120 60% 15%;
   --primary-foreground: 0 0% 98%;
   --primary-light: 120 40% 25%;
   --primary-dark: 120 80% 10%;
-  
+
   /* KFUPM Gold Secondary */
   --secondary: 43 74% 49%;
   --secondary-foreground: 120 20% 15%;
   --secondary-light: 43 84% 65%;
   --secondary-dark: 43 64% 35%;
-  
+
   --muted: 120 10% 96%;
   --muted-foreground: 120 10% 45%;
   --accent: 43 74% 49%;
@@ -93,13 +93,13 @@ html {
   --border: 120 10% 90%;
   --input: 120 10% 95%;
   --ring: 120 60% 15%;
-  
+
   --chart-1: 120 60% 15%;
   --chart-2: 43 74% 49%;
   --chart-3: 120 40% 25%;
   --chart-4: 43 84% 65%;
   --chart-5: 43 64% 35%;
-  
+
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
   --sidebar-primary: 240 5.9% 10%;
@@ -108,19 +108,20 @@ html {
   --sidebar-accent-foreground: 240 5.9% 10%;
   --sidebar-border: 220 13% 91%;
   --sidebar-ring: 217.2 91.2% 59.8%;
-  
+
   /* Custom gradients with KFUPM colors */
   --gradient-primary: linear-gradient(135deg, hsl(120 60% 15%), hsl(120 40% 25%));
   --gradient-secondary: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 84% 65%));
   --gradient-hero: linear-gradient(135deg, hsl(120 60% 15%) 0%, hsl(120 40% 25%) 50%, hsl(43 74% 49%) 100%);
   --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(120 10% 98%) 100%);
   --geometric-pattern: url('/kfupm-pattern.svg');
-  
+
   /* KFUPM-themed shadows */
   --shadow-soft: 0 4px 20px hsl(120 60% 15% / 0.1);
   --shadow-medium: 0 8px 30px hsl(120 60% 15% / 0.15);
   --shadow-strong: 0 15px 40px hsl(120 60% 15% / 0.2);
   --shadow-glow: 0 0 30px hsl(43 74% 49% / 0.3);
+  --sidebar: hsl(0 0% 98%);
 }
 
 .dark {
@@ -151,6 +152,7 @@ html {
   --sidebar-accent-foreground: 240 4.8% 95.9%;
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
+  --sidebar: hsl(240 5.9% 10%);
 }
 
 /* Custom animations */
@@ -361,18 +363,18 @@ html {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  
+
   /* Better text scaling for tablets */
   .hero-title {
     font-size: clamp(1.875rem, 4vw, 3rem);
     line-height: 1.2;
   }
-  
+
   .hero-subtitle {
     font-size: clamp(1.5rem, 3.5vw, 2.25rem);
     line-height: 1.3;
   }
-  
+
   .feature-card {
     min-height: 280px;
   }
@@ -383,15 +385,15 @@ html {
   .text-responsive {
     font-size: clamp(0.875rem, 2vw, 1.125rem);
   }
-  
+
   .heading-responsive {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
   }
-  
+
   .container {
     max-width: 95%;
   }
-  
+
   /* Ensure buttons don't overflow */
   .button-responsive {
     font-size: clamp(0.75rem, 1.8vw, 1rem);
