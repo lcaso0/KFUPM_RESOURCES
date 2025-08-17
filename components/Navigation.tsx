@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  SignedIn,
-  SignedOut,
-  useClerk,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, useClerk, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -76,14 +71,16 @@ const Navigation = () => {
               </Button>
             </SignedOut>
             <SignedIn>
-                <UserButton appearance={{
-                elements: {
-                  userButtonAvatarBox: {
-                    width: '2.5rem',
-                    height: '2.5rem'
-                  }
-                }
-          }}/>
+              <UserButton
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: {
+                      width: "2.5rem",
+                      height: "2.5rem",
+                    },
+                  },
+                }}
+              />
             </SignedIn>
           </div>
 
@@ -124,9 +121,26 @@ const Navigation = () => {
               >
                 Contact | تواصل
               </a>
-              <Button className="bg-gradient-secondary text-secondary-foreground hover:bg-secondary/90 font-cairo mt-4">
-                Get Started | ابدأ الآن
-              </Button>
+              <SignedOut>
+                <Button
+                  onClick={() => openSignIn()}
+                  className="bg-gradient-secondary text-secondary-foreground hover:bg-secondary/90 font-cairo"
+                >
+                  Get Started | ابدأ الآن
+                </Button>
+              </SignedOut>
+              <SignedIn>
+                <UserButton
+                  appearance={{
+                    elements: {
+                      userButtonAvatarBox: {
+                        width: "2.5rem",
+                        height: "2.5rem",
+                      },
+                    },
+                  }}
+                />
+              </SignedIn>
             </div>
           </div>
         )}
@@ -136,4 +150,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
