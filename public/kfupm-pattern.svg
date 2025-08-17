@@ -1,0 +1,84 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- KFUPM Green gradient -->
+    <linearGradient id="kfupGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d5a3f;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#0f2419;stop-opacity:0.02" />
+    </linearGradient>
+    
+    <!-- Gold accent -->
+    <linearGradient id="kfupGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a853;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="transparent"/>
+  
+  <!-- Geometric Islamic-inspired patterns -->
+  <g opacity="0.15">
+    <!-- Central star pattern -->
+    <g transform="translate(200, 200)">
+      <polygon points="0,-60 15,-15 60,0 15,15 0,60 -15,15 -60,0 -15,-15" 
+               fill="none" stroke="#2d5a3f" stroke-width="1"/>
+      <polygon points="0,-40 10,-10 40,0 10,10 0,40 -10,10 -40,0 -10,-10" 
+               fill="none" stroke="#d4a853" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="20" fill="none" stroke="#2d5a3f" stroke-width="0.5"/>
+    </g>
+    
+    <!-- Corner patterns -->
+    <g transform="translate(50, 50)">
+      <rect x="-20" y="-20" width="40" height="40" fill="none" stroke="#2d5a3f" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="15" fill="none" stroke="#d4a853" stroke-width="0.5"/>
+      <polygon points="0,-10 7,-7 10,0 7,7 0,10 -7,7 -10,0 -7,-7" fill="url(#kfupGreen)"/>
+    </g>
+    
+    <g transform="translate(350, 50)">
+      <rect x="-20" y="-20" width="40" height="40" fill="none" stroke="#2d5a3f" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="15" fill="none" stroke="#d4a853" stroke-width="0.5"/>
+      <polygon points="0,-10 7,-7 10,0 7,7 0,10 -7,7 -10,0 -7,-7" fill="url(#kfupGold)"/>
+    </g>
+    
+    <g transform="translate(50, 350)">
+      <rect x="-20" y="-20" width="40" height="40" fill="none" stroke="#2d5a3f" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="15" fill="none" stroke="#d4a853" stroke-width="0.5"/>
+      <polygon points="0,-10 7,-7 10,0 7,7 0,10 -7,7 -10,0 -7,-7" fill="url(#kfupGreen)"/>
+    </g>
+    
+    <g transform="translate(350, 350)">
+      <rect x="-20" y="-20" width="40" height="40" fill="none" stroke="#2d5a3f" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="15" fill="none" stroke="#d4a853" stroke-width="0.5"/>
+      <polygon points="0,-10 7,-7 10,0 7,7 0,10 -7,7 -10,0 -7,-7" fill="url(#kfupGold)"/>
+    </g>
+  </g>
+  
+  <!-- Subtle building silhouettes -->
+  <g opacity="0.08">
+    <rect x="20" y="300" width="15" height="80" fill="#2d5a3f"/>
+    <rect x="40" y="320" width="12" height="60" fill="#2d5a3f"/>
+    <rect x="55" y="310" width="18" height="70" fill="#2d5a3f"/>
+    
+    <rect x="320" y="290" width="20" height="90" fill="#2d5a3f"/>
+    <rect x="345" y="305" width="15" height="75" fill="#2d5a3f"/>
+    <rect x="365" y="315" width="10" height="65" fill="#2d5a3f"/>
+  </g>
+  
+  <!-- Arabic calligraphy inspired curves -->
+  <g opacity="0.06">
+    <path d="M50,150 Q100,120 150,150 Q200,180 250,150" 
+          fill="none" stroke="#d4a853" stroke-width="2"/>
+    <path d="M150,250 Q200,220 250,250 Q300,280 350,250" 
+          fill="none" stroke="#d4a853" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Subtle grid -->
+  <g opacity="0.02">
+    <defs>
+      <pattern id="subtleGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2d5a3f" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="400" height="400" fill="url(#subtleGrid)"/>
+  </g>
+</svg>
