@@ -18,19 +18,19 @@ const Footer = () => {
           >
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
               <motion.div 
-                className="w-16 h-6 sm:w-20 sm:h-8 flex items-center justify-center"
+                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-secondary rounded-md"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <img 
                   src="/kfupm-logo.svg" 
                   alt="KFUPM Logo" 
-                  className="w-16 h-6 sm:w-20 sm:h-8 brightness-150" 
+                  className="w-12 h-12 md:w-14 md:h-14 brightness-100" 
                 />
               </motion.div>
               <div>
-                <h3 className="font-cairo font-bold text-lg sm:text-xl">Verified Resource Hub</h3>
-                <p className="font-noto-arabic text-secondary text-sm sm:text-base">مركز الموارد المعتمدة</p>
+                <h3 className="font-cairo font-bold text-lg sm:text-xl">KFUPM Resource Hub</h3>
+                <p className="font-noto-arabic text-secondary text-sm sm:text-base">مركز الموارد</p>
               </div>
             </div>
             <p className="text-primary-foreground/80 font-cairo mb-3 sm:mb-4 max-w-md text-sm sm:text-base leading-relaxed">
