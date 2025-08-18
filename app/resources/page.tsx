@@ -4,7 +4,7 @@ import ResourcesList from "./components/ResourcesList";
 
 export default function Resources() {
   return (
-    <div className="min-h-screen pt-16 bg-[var(--background)]">
+    <div className="min-h-screen pt-16 bg-background">
       <Navbar />
       <Header />
       <main>

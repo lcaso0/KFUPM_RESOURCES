@@ -19,7 +19,7 @@ export default function Header() {
       {/* {[...Array(15)].map((_, i) => ( */}
       {/*   <div */}
       {/*     key={`header-particle-${i}`} */}
-      {/*      className="absolute text-[var(--text-secondary)]/50 font-bold pointer-events-none animate-arabic-float" */}
+      {/*      className="absolute text-secondary/50 font-bold pointer-events-none animate-arabic-float" */}
       {/*     style={{ */}
       {/*       top: `${-50 + Math.random() * 50}px`, */}
       {/*       left: `${Math.random() * 100}%`, */}
