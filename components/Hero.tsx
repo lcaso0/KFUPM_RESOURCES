@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Shield, Users } from "lucide-react";
 import { easeInOut, easeOut, motion } from "framer-motion";
+import Link from "next/link";
 
 const Hero = () => {
   const containerVariants = {
@@ -141,22 +142,26 @@ const Hero = () => {
             variants={itemVariants}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                className="bg-secondary text-secondary-foreground hover:bg-secondary-dark font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-glow w-full sm:w-auto min-w-[200px]"
-              >
-                Explore Resources
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-              </Button>
+              <Link href="/resources">
+                <Button
+                  size="lg"
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary-dark font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-glow w-full sm:w-auto min-w-[200px]"
+                >
+                  Explore Resources
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                </Button>
+              </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-secondary text-secondary hover:bg-secondary hover:text-primary font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px] border-2"
-              >
-                استكشف الموارد
-              </Button>
+              <Link href="/resources">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-secondary text-secondary hover:bg-secondary hover:text-primary font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px] border-2"
+                >
+                  استكشف الموارد
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
 
