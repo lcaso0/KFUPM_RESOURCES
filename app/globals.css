@@ -22,10 +22,40 @@ html {
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-light: hsl(var(--primary-light));
   --color-primary-dark: hsl(var(--primary-dark));
+
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
   --color-secondary-light: hsl(var(--secondary-light));
   --color-secondary-dark: hsl(var(--secondary-dark));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-gold: hsl(var(--gold));
+  --color-gold-light: hsl(var(--gold-light));
+  --color-gold-dark: hsl(var(--gold-dark));
+
+  --color-brown: hsl(var(--brown));
+  --color-brown-light: hsl(var(--brown-light));
+  --color-brown-dark: hsl(var(--brown-dark));
+
+  --color-cream: hsl(var(--cream));
+  --color-cream-muted: hsl(var(--cream-muted));
+  --color-warm-white: hsl(var(--warm-white));
+
+  --color-charcoal: hsl(var(--charcoal));
+  --color-charcoal-light: hsl(var(--charcoal-light));
+  --color-charcoal-dark: hsl(var(--charcoal-dark));
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
@@ -52,8 +82,10 @@ html {
   --background-image-gradient-primary: var(--gradient-primary);
   --background-image-gradient-secondary: var(--gradient-secondary);
   --background-image-gradient-hero: var(--gradient-hero);
-  --background-image-gradient-subtle: var(--gradient-subtle);
-  --background-image-geometric-pattern: var(--geometric-pattern);
+  --background-image-gradient-arabic: var(--gradient-arabic);
+  --background-image-gradient-arabic-gold: var(--gradient-arabic-gold);
+  --background-image-gradient-warm: var(--gradient-warm);
+  --background-image-gradient-dark: var(--gradient-dark);
 
   --box-shadow-soft: var(--shadow-soft);
   --box-shadow-medium: var(--shadow-medium);
@@ -65,94 +97,136 @@ html {
   --cl-user-button-avatar-size: 64px !important;
 
   --radius: 0.75rem;
-  --background: 0 0% 100%;
-  --foreground: 120 20% 15%;
-  --card: 0 0% 100%;
-  --card-foreground: 120 20% 15%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 120 20% 15%;
+  
+  /* KFUPM Sophisticated Color Palette */
+  --background: 35 20% 8%; /* Deep warm dark */
+  --foreground: 43 30% 95%; /* Soft cream */
+  --card: 35 15% 12%; /* Dark card background */
+  --card-foreground: 43 30% 95%; /* Light text on cards */
+  --popover: 35 15% 15%; /* Popover background */
+  --popover-foreground: 43 30% 95%; /* Popover text */
 
-  /* KFUPM Green Primary */
-  --primary: 120 60% 15%;
-  --primary-foreground: 0 0% 98%;
-  --primary-light: 120 40% 25%;
-  --primary-dark: 120 80% 10%;
+  /* Primary: #d9a520 (KFUPM Gold) */
+  --primary: 43 74% 49%; /* #d9a520 */
+  --primary-foreground: 35 20% 8%; /* Dark text on gold */
+  --primary-light: 43 84% 59%; /* Lighter gold */
+  --primary-dark: 43 64% 39%; /* Darker gold */
 
-  /* KFUPM Gold Secondary */
-  --secondary: 43 74% 49%;
-  --secondary-foreground: 120 20% 15%;
-  --secondary-light: 43 84% 65%;
-  --secondary-dark: 43 64% 35%;
+  /* Secondary: #4c3702 (Deep Brown) */
+  --secondary: 35 95% 15%; /* #4c3702 */
+  --secondary-foreground: 43 30% 95%; /* Light text on brown */
+  --secondary-light: 35 85% 25%; /* Lighter brown */
+  --secondary-dark: 35 100% 8%; /* Darker brown */
 
-  --muted: 120 10% 96%;
-  --muted-foreground: 120 10% 45%;
-  --accent: 43 74% 49%;
-  --accent-foreground: 120 20% 15%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 120 10% 90%;
-  --input: 120 10% 95%;
-  --ring: 120 60% 15%;
+  /* Accent Colors */
+  --accent: 25 70% 45%; /* Warm amber */
+  --accent-foreground: 35 20% 8%;
+  --muted: 35 10% 20%; /* Muted dark */
+  --muted-foreground: 43 20% 75%; /* Muted light */
+  --destructive: 0 70% 50%; /* Rich red */
+  --destructive-foreground: 43 30% 95%;
+  --border: 35 15% 25%; /* Subtle border */
+  --input: 35 15% 18%; /* Input background */
+  --ring: 43 74% 49%; /* Focus ring */
 
-  --chart-1: 120 60% 15%;
-  --chart-2: 43 74% 49%;
-  --chart-3: 120 40% 25%;
-  --chart-4: 43 84% 65%;
-  --chart-5: 43 64% 35%;
+  /* Extended Color Palette */
+  --gold: 43 74% 49%; /* #d9a520 */
+  --gold-light: 43 84% 59%;
+  --gold-dark: 43 64% 39%;
+  --brown: 35 95% 15%; /* #4c3702 */
+  --brown-light: 35 85% 25%;
+  --brown-dark: 35 100% 8%;
+  --cream: 43 30% 95%;
+  --cream-muted: 43 20% 85%;
+  --warm-white: 43 25% 98%;
+  --charcoal: 35 20% 8%;
+  --charcoal-light: 35 15% 15%;
+  --charcoal-dark: 35 25% 5%;
 
-  --sidebar-background: 0 0% 98%;
-  --sidebar-foreground: 240 5.3% 26.1%;
-  --sidebar-primary: 240 5.9% 10%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 240 4.8% 95.9%;
-  --sidebar-accent-foreground: 240 5.9% 10%;
-  --sidebar-border: 220 13% 91%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  /* Gradient System */
+  --gradient-primary: linear-gradient(135deg, var(--gold), var(--gold-light));
+  --gradient-secondary: linear-gradient(135deg, var(--brown), var(--brown-light));
+  --gradient-hero: linear-gradient(135deg, 
+    var(--charcoal-dark) 0%, 
+    var(--brown-dark) 25%, 
+    var(--brown) 50%, 
+    var(--gold) 75%, 
+    var(--gold-light) 100%
+  );
+  --gradient-arabic: linear-gradient(135deg, 
+    var(--charcoal) 0%, 
+    var(--brown) 30%, 
+    var(--gold) 70%, 
+    var(--gold-light) 100%
+  );
+  --gradient-arabic-gold: linear-gradient(135deg, 
+    var(--brown-dark) 0%, 
+    var(--brown) 50%, 
+    var(--gold) 100%
+  );
+  --gradient-warm: linear-gradient(135deg, 
+    var(--charcoal) 0%, 
+    var(--brown-dark) 50%, 
+    var(--gold) 100%
+  );
+  --gradient-dark: linear-gradient(135deg, 
+    var(--charcoal-dark) 0%, 
+    var(--charcoal) 100%
+  );
 
-  /* Custom gradients with KFUPM colors */
-  --gradient-primary: linear-gradient(135deg, hsl(120 60% 15%), hsl(120 40% 25%));
-  --gradient-secondary: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 84% 65%));
-  --gradient-hero: linear-gradient(135deg, hsl(120 60% 15%) 0%, hsl(120 40% 25%) 50%, hsl(43 74% 49%) 100%);
-  --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(120 10% 98%) 100%);
-  --geometric-pattern: url('/kfupm-pattern.svg');
+  /* Background Patterns */
+  --background-hero: var(--gradient-hero);
+  --background-card: var(--charcoal-light);
+  --background-surface: var(--charcoal);
+  --background-subtle: var(--brown-dark);
 
-  /* KFUPM-themed shadows */
-  --shadow-soft: 0 4px 20px hsl(120 60% 15% / 0.1);
-  --shadow-medium: 0 8px 30px hsl(120 60% 15% / 0.15);
-  --shadow-strong: 0 15px 40px hsl(120 60% 15% / 0.2);
-  --shadow-glow: 0 0 30px hsl(43 74% 49% / 0.3);
-  --sidebar: hsl(0 0% 98%);
+  /* Text Colors */
+  --text-primary: var(--cream);
+  --text-secondary: var(--cream-muted);
+  --text-muted: var(--muted-foreground);
+  --text-accent: var(--gold);
+  --text-inverse: var(--charcoal);
+
+  /* Border & Shadow Colors */
+  --border-subtle: var(--border);
+  --border-accent: var(--gold);
+  --shadow-gold: 0 0 20px rgba(217, 165, 32, 0.3);
+  --shadow-brown: 0 0 20px rgba(76, 55, 2, 0.2);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
-  --sidebar-background: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-primary: 224.3 76.3% 48%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
-  --sidebar: hsl(240 5.9% 10%);
+  /* Dark mode uses the same sophisticated palette with adjusted brightness */
+  --background: 35 15% 5%; /* Even darker */
+  --foreground: 43 25% 90%; /* Slightly dimmer cream */
+  --card: 35 12% 8%; /* Darker cards */
+  --card-foreground: 43 25% 90%;
+  --popover: 35 12% 10%;
+  --popover-foreground: 43 25% 90%;
+  --primary: 43 74% 45%; /* Slightly muted gold */
+  --primary-foreground: 35 15% 5%;
+  --secondary: 35 90% 12%; /* Darker brown */
+  --secondary-foreground: 43 25% 90%;
+  --muted: 35 8% 15%;
+  --muted-foreground: 43 15% 70%;
+  --accent: 25 60% 40%;
+  --accent-foreground: 35 15% 5%;
+  --destructive: 0 60% 45%;
+  --destructive-foreground: 43 25% 90%;
+  --border: 35 10% 20%;
+  --input: 35 10% 12%;
+  --ring: 43 74% 45%;
+  --sidebar-background: 35 12% 8%;
+  --sidebar-foreground: 43 25% 90%;
+  --sidebar-primary: 43 74% 45%;
+  --sidebar-primary-foreground: 35 15% 5%;
+  --sidebar-accent: 35 15% 15%;
+  --sidebar-accent-foreground: 43 74% 45%;
+  --sidebar-border: 35 10% 20%;
+  --sidebar-ring: 43 74% 45%;
+  --sidebar: hsl(35 12% 8%);
 }
 
 /* Custom animations */
@@ -430,4 +504,205 @@ html {
 
 .animate-slide-in-right {
   animation: slideInFromRight 0.8s ease-out;
+}
+
+/* Arabic-themed animations */
+@keyframes arabicFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(-2deg);
+  }
+}
+
+@keyframes arabicGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(43 70% 45% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(43 70% 45% / 0.6);
+  }
+}
+
+@keyframes arabicPattern {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes arabicShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes arabicRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes arabicPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes arabicWave {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(20px) translateY(0);
+  }
+  75% {
+    transform: translateX(10px) translateY(5px);
+  }
+}
+
+@keyframes arabicMosaic {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+.animate-arabic-float {
+  animation: arabicFloat 6s ease-in-out infinite;
+}
+
+.animate-arabic-glow {
+  animation: arabicGlow 3s ease-in-out infinite;
+}
+
+.animate-arabic-pattern {
+  animation: arabicPattern 20s linear infinite;
+}
+
+.animate-arabic-shimmer {
+  animation: arabicShimmer 3s ease-in-out infinite;
+}
+
+.animate-arabic-rotate {
+  animation: arabicRotate 8s linear infinite;
+}
+
+.animate-arabic-pulse {
+  animation: arabicPulse 4s ease-in-out infinite;
+}
+
+.animate-arabic-wave {
+  animation: arabicWave 8s ease-in-out infinite;
+}
+
+.animate-arabic-mosaic {
+  animation: arabicMosaic 12s linear infinite;
+}
+
+  /* Sophisticated KFUPM Background System */
+.arabic-geometric-bg {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(217, 165, 32, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(76, 55, 2, 0.1) 0%, transparent 50%),
+    var(--gradient-arabic);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+}
+
+.arabic-mosaic-overlay {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(217, 165, 32, 0.05) 2px,
+      rgba(217, 165, 32, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(76, 55, 2, 0.05) 2px,
+      rgba(76, 55, 2, 0.05) 4px
+    );
+  background-size: 40px 40px;
+  animation: arabicPattern 15s linear infinite;
+}
+
+.arabic-calligraphy-bg {
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.arabic-calligraphy-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 100px,
+      rgba(217, 165, 32, 0.03) 100px,
+      rgba(217, 165, 32, 0.03) 101px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 100px,
+      rgba(76, 55, 2, 0.03) 100px,
+      rgba(76, 55, 2, 0.03) 101px
+    );
+  animation: arabicPattern 25s linear infinite;
+}
+
+.arabic-calligraphy-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at top left, rgba(217, 165, 32, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(76, 55, 2, 0.1) 0%, transparent 50%);
+  animation: arabicGlow 8s ease-in-out infinite;
 }

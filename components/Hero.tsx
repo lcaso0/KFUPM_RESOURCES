@@ -47,11 +47,56 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-90" />
+      {/* Enhanced Arabic-themed Background */}
+      <div className="absolute inset-0 arabic-calligraphy-bg" />
+      
+      {/* Arabic Geometric Pattern Overlay */}
+      <div className="absolute inset-0 arabic-mosaic-overlay opacity-30" />
+      
+      {/* Floating Elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-gold/20 rounded-full blur-sm hidden lg:block animate-arabic-float"
+          variants={floatingVariants}
+          animate="animate"
+        />
+        <motion.div
+          className="absolute bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-brown/20 rounded-full blur-sm hidden lg:block animate-arabic-glow"
+          variants={floatingVariants}
+          animate="animate"
+          transition={{ delay: 1 }}
+        />
+      </div>
 
-      {/* Geometric Pattern Overlay */}
-      <div className="absolute inset-0 bg-geometric-pattern opacity-5" />
+      {/* Falling KFUPM Particles */}
+      {/* {[...Array(25)].map((_, i) => ( */}
+      {/*   <motion.div */}
+      {/*     key={`particle-${i}`} */}
+      {/*     className="absolute text-gold/50 font-bold pointer-events-none" */}
+      {/*     initial={{ */}
+      {/*       y: -100, */}
+      {/*       x: Math.random() * window.innerWidth, */}
+      {/*       opacity: 0, */}
+      {/*     }} */}
+      {/*     animate={{ */}
+      {/*       y: window.innerHeight + 100, */}
+      {/*       opacity: [0, 0.8, 0.8, 0], */}
+      {/*       rotate: Math.random() * 360, */}
+      {/*     }} */}
+      {/*     transition={{ */}
+      {/*       duration: 12 + Math.random() * 8, */}
+      {/*       repeat: Infinity, */}
+      {/*       delay: Math.random() * 12, */}
+      {/*       ease: "linear", */}
+      {/*     }} */}
+      {/*     style={{ */}
+      {/*       fontSize: `${18 + Math.random() * 20}px`, */}
+      {/*       left: `${Math.random() * 100}%`, */}
+      {/*     }} */}
+      {/*   > */}
+      {/*     {["KFUPM", "#67", "📚", "🎓", "📖", "✨", "🏛️", "🔬", "⚗️", "📊", "📝", "🎯"][Math.floor(Math.random() * 12)]} */}
+      {/*   </motion.div> */}
+      {/* ))} */}
 
       <div className="container pt-24 md:pt-0 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -62,7 +107,7 @@ const Hero = () => {
         >
           {/* Main Heading */}
           <motion.div variants={itemVariants}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-primary-foreground mb-4 sm:mb-6 leading-tight px-2 tracking-wide">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight px-2 tracking-wide">
               {letters.map((letter, i) => (
                 <motion.span
                   key={i}
@@ -94,22 +139,37 @@ const Hero = () => {
               ))}{" "}
               Resource Hub
             </h1>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-diwani font-bold text-secondary mb-6 sm:mb-8 leading-relaxed px-2 tracking-wide drop-shadow-lg">
+            <motion.h2 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-diwani font-bold text-primary mb-6 sm:mb-8 leading-relaxed px-2 tracking-wide"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 1.8 }}
+            >
               مركز الموارد لجامعة الملك فهد للبتدول والمعادن
-            </h2>
+            </motion.h2>
           </motion.div>
 
-          {/* Subtitle */}
+          {/* Enhanced Subtitle */}
           <motion.div variants={itemVariants} className="mb-8 sm:mb-12">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-3 sm:mb-4 font-cairo px-4 max-w-3xl mx-auto">
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-3 sm:mb-4 font-cairo px-4 max-w-3xl mx-auto drop-shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 2.2 }}
+            >
               Your trusted academic source at KFUPM
-            </p>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-secondary-light font-noto-arabic px-4 max-w-3xl mx-auto">
+            </motion.p>
+            <motion.p 
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-primary font-noto-arabic px-4 max-w-3xl mx-auto drop-shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 2.4 }}
+            >
               مصدرك الأكاديمي الموثوق في جامعة الملك فهد للبترول والمعادن
-            </p>
+            </motion.p>
           </motion.div>
 
-          {/* Features Pills */}
+          {/* Enhanced Features Pills */}
           <motion.div
             className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4"
             variants={itemVariants}
@@ -121,14 +181,23 @@ const Hero = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="flex items-center bg-background/20 backdrop-blur-sm rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-3 text-primary-foreground text-xs sm:text-sm lg:text-base"
+                className="flex items-center bg-charcoal-light/30 backdrop-blur-md rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-3 text-primary text-xs sm:text-sm lg:text-base border border-gold/20"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 2.6 + index * 0.1,
+                  type: "spring", 
+                  stiffness: 400, 
+                  damping: 17 
+                }}
                 whileHover={{
                   scale: 1.05,
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  backgroundColor: "rgba(217, 165, 32, 0.2)",
+                  borderColor: "rgba(217, 165, 32, 0.4)",
                 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <item.icon className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 text-secondary" />
+                <item.icon className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 text-primary" />
                 <span className="font-cairo whitespace-nowrap">
                   {item.text}
                 </span>
@@ -136,28 +205,40 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* Enhanced CTA Buttons */}
           <motion.div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-4"
             variants={itemVariants}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 2.8 }}
+            >
               <Link href="/resources">
                 <Button
                   size="lg"
-                  className="bg-secondary text-secondary-foreground hover:bg-secondary-dark font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-glow w-full sm:w-auto min-w-[200px]"
+                  className="bg-gold text-charcoal hover:bg-gold-dark font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-gold w-full sm:w-auto min-w-[200px] transition-all duration-300"
                 >
                   Explore Resources
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
               </Link>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 3 }}
+            >
               <Link href="/resources">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-secondary text-secondary hover:bg-secondary hover:text-primary font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px] border-2"
+                  className="border-gold text-gold hover:bg-gold hover:text-charcoal font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px] border-2 hover:border-gold-light transition-all duration-300"
                 >
                   استكشف الموارد
                 </Button>
@@ -165,9 +246,9 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Stats */}
+          {/* Enhanced Stats Cards */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 px-4 pb-4 md:pb-0"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 px-4 pb-4 md:pb-0 max-w-4xl mx-auto"
             variants={containerVariants}
           >
             {[
@@ -185,26 +266,29 @@ const Hero = () => {
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                className="text-center"
+                className="bg-charcoal-light/50 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-gold/30 hover:border-gold/50 transition-all duration-300"
                 variants={itemVariants}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 3.2 + index * 0.1 }}
               >
                 <motion.div
-                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-secondary mb-2 font-cairo"
+                  className="text-3xl sm:text-4xl font-bold text-gold mb-2 font-cairo"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{
-                    delay: 0.8 + index * 0.1,
+                    delay: 3.4 + index * 0.1,
                     type: "spring",
                     stiffness: 300,
                   }}
                 >
                   {stat.number}
                 </motion.div>
-                <div className="text-sm sm:text-base text-primary-foreground/80 font-cairo">
+                <div className="text-base sm:text-lg font-semibold text-primary font-cairo mb-1">
                   {stat.title}
                 </div>
-                <div className="text-xs sm:text-sm text-secondary-light font-noto-arabic">
+                <div className="text-sm text-gold/80 font-noto-arabic">
                   {stat.titleAr}
                 </div>
               </motion.div>
@@ -212,25 +296,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Floating Elements */}
-      <motion.div
-        className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-secondary/20 rounded-full hidden lg:block"
-        variants={floatingVariants}
-        animate="animate"
-      />
-      <motion.div
-        className="absolute bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary-light/20 rounded-full hidden lg:block"
-        variants={floatingVariants}
-        animate="animate"
-        transition={{ delay: 1 }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-secondary-light/20 rounded-full hidden lg:block"
-        variants={floatingVariants}
-        animate="animate"
-        transition={{ delay: 2 }}
-      />
     </section>
   );
 };

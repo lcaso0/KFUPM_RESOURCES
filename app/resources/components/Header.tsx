@@ -1,16 +1,44 @@
 export default function Header() {
   return (
-    <header className="relative bg-gray-800 text-white text-center py-12">
+    <header className="relative text-primary text-center py-24 overflow-hidden">
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-90" />
+      {/* Enhanced Arabic-themed Background - Same as Hero */}
+      <div className="absolute inset-0 arabic-calligraphy-bg" />
+      
+      {/* Arabic Geometric Pattern Overlay */}
+      <div className="absolute inset-0 arabic-mosaic-overlay opacity-30" />
 
-      {/* Geometric Pattern Overlay */}
-      <div className="absolute inset-0 bg-geometric-pattern opacity-100" />
+      {/* Floating Elements - Same as Hero */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-float" />
+        <div className="absolute bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-glow" />
+        <div className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-rotate" />
+      </div>
+
+      {/* Falling Particles - Same as Hero */}
+      {/* {[...Array(15)].map((_, i) => ( */}
+      {/*   <div */}
+      {/*     key={`header-particle-${i}`} */}
+      {/*      className="absolute text-[var(--text-secondary)]/50 font-bold pointer-events-none animate-arabic-float" */}
+      {/*     style={{ */}
+      {/*       top: `${-50 + Math.random() * 50}px`, */}
+      {/*       left: `${Math.random() * 100}%`, */}
+      {/*       fontSize: `${16 + Math.random() * 16}px`, */}
+      {/*       animationDelay: `${Math.random() * 10}s`, */}
+      {/*       animationDuration: `${10 + Math.random() * 10}s` */}
+      {/*     }} */}
+      {/*   > */}
+      {/*     {["KFUPM", "#67", "📚", "🎓", "📖"][Math.floor(Math.random() * 5)]} */}
+      {/*   </div> */}
+      {/* ))} */}
 
       <div className="container relative z-10 mx-auto tracking-wide flex flex-col gap-3">
-      <h1 className="text-6xl font-bold text-secondary font-diwani ">المصادر الأكاديمية</h1>
-      <p className="text-xl mt-2 font-noto-arabic">موارد ومصادر لطلاب جامعة الملك فهد للبترول والمعادن</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary font-diwani drop-shadow-2xl">
+          المصادر الأكاديمية
+        </h1>
+        <p className="text-lg sm:text-xl md:text-2xl mt-2 font-noto-arabic text-white drop-shadow-lg">
+          موارد ومصادر لطلاب جامعة الملك فهد للبترول والمعادن
+        </p>
       </div>
 
     </header>
