@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import ThemeToggler from "./ThemeToggler";
+import { motion } from "framer-motion";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-              <div 
+              <motion.div 
                  className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-gold-light rounded-md"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -27,7 +28,7 @@ const Navigation = () => {
                   alt="KFUPM Logo" 
                   className="w-10 h-10 md:w-14 md:h-14 brightness-100" 
                 />
-              </div>
+              </motion.div>
             <div className="hidden sm:block">
               <h1 className="font-cairo font-bold text-lg text-primary">
                 Resource Hub
