@@ -1,14 +1,16 @@
-import ResourceCard from "./ResourceCard";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import ResourceFolder from "./ResourceFolder";
 
-const resources = [
-  { title: "ملخص الوحدة الأولى", course: "MATH101", type: "ملخص", semester: "212" },
-  { title: "اختبار فصلي أول", course: "PHYS101", type: "اختبار", semester: "201" },
-  { title: "واجب بيتي محلول", course: "ICS108", type: "واجب", semester: "223" },
-  { title: "ملاحظات المحاضرة", course: "CHEM101", type: "ملاحظات", semester: "192" },
-  { title: "ملخص الوحدة الثانية", course: "MATH101", type: "ملخص", semester: "212" },
-  { title: "اختبار فصلي ثاني", course: "PHYS101", type: "اختبار", semester: "201" },
+const folders = [
+  { title: "ملخص الوحدة الأولى", course: "MATH101", description: "ملخص" },
+  { title: "اختبار فصلي أول", course: "PHYS101", description: "اختبار"},
+  { title: "واجب بيتي محلول", course: "ICS108", description: "واجب"},
+  { title: "ملاحظات المحاضرة", course: "CHEM101", description: "ملاحظات"},
+  { title: "ملخص الوحدة الثانية", course: "MATH101", description: "ملخص"},
+  { title: "اختبار فصلي ثاني", course: "PHYS101", description: "اختبار"},
+  { title: "اختبار فصلي ثاني", course: "PE101", description: "اختبار"},
+  { title: "اختبار فصلي ثاني", course: "CS888", description: "اختبار"},
 ];
 
 export default function ResourcesList() {
@@ -48,9 +50,9 @@ export default function ResourcesList() {
           </Select>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {resources.map((resource, index) => (
-          <ResourceCard key={index} {...resource} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {folders.map((resource, index) => (
+          <ResourceFolder key={index} {...resource} />
         ))}
       </div>
     </div>
