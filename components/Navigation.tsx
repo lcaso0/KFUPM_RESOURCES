@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, useClerk, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -14,7 +15,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3">
             <div className="w-16 h-6 flex items-center justify-center">
               <img
                 src="/kfupm-logo.svg"
@@ -24,33 +25,33 @@ const Navigation = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="font-cairo font-bold text-lg text-foreground">
-                Verified Resource Hub
+                Resource Hub
               </h1>
               <p className="font-noto-arabic text-sm text-muted-foreground">
-                مركز الموارد المعتمدة
+                مركز الموارد
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="text-foreground hover:text-primary transition-colors font-cairo"
             >
               Home | الرئيسية
-            </a>
+            </Link>
+            <Link
+              href="/resources"
+              className="text-foreground hover:text-primary transition-colors font-cairo"
+            >
+              Resources | الموارد
+            </Link>
             <a
               href="#features"
               className="text-foreground hover:text-primary transition-colors font-cairo"
             >
               Features | المميزات
-            </a>
-            <a
-              href="#resources"
-              className="text-foreground hover:text-primary transition-colors font-cairo"
-            >
-              Resources | الموارد
             </a>
             <a
               href="#contact"
