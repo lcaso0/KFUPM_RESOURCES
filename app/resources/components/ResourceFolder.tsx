@@ -47,6 +47,8 @@ export default function ResourceFolder({ title, course, description }: Props) {
           style={{ perspective: 1000 }}
           onHoverStart={() => setIsFlipped(true)}
           onHoverEnd={() => setIsFlipped(false)}
+          onTapStart={() => setIsFlipped(true)}
+          onTapCancel={() => setIsFlipped(false)}
         >
           <motion.div
             className="relative w-full h-full"
