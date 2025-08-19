@@ -38,6 +38,7 @@ const Hero = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
+        delay: 0.75,
         ease: easeInOut,
       },
     },
@@ -59,21 +60,15 @@ const Hero = () => {
       <div className="absolute inset-0 arabic-calligraphy-bg" />
 
       {/* Arabic Geometric Pattern Overlay */}
-      <div className="absolute inset-0 arabic-mosaic-overlay opacity-30" />
+      <div className="absolute inset-0 arabic-mosaic-overlay opacity-30 bg-secondary/20" />
 
       {/* Floating Elements */}
       <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-accent/20 rounded-full blur-sm hidden lg:block animate-arabic-float"
-          variants={floatingVariants}
-          animate="animate"
-        />
-        <motion.div
-          className="absolute bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-secondary dark:bg-primary/20 rounded-full blur-sm hidden lg:block animate-arabic-glow"
-          variants={floatingVariants}
-          animate="animate"
-          transition={{ delay: 1 }}
-        />
+        <div className="absolute top-48 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-float" />
+        <div className="absolute top-32 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-float" />
+        <div className="absolute bottom-52 right-0 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-glow" />
+        <div className="absolute bottom-40 right-4 sm:right-10 w-8 h-8 sm:w-8 sm:h-8 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-glow" />
+        <div className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-rotate" />
       </div>
 
       <div className="container pt-24 md:pt-0 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
