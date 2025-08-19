@@ -10,11 +10,11 @@ export default function Header() {
 
       {/* Floating Elements - Same as Hero */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-float" />
-        <div className="absolute top-5 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-float" />
-        <div className="absolute bottom-1 right-0 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-glow" />
-        <div className="absolute bottom-20 right-4 sm:right-10 w-8 h-8 sm:w-8 sm:h-8 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-glow" />
-        <div className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-rotate" />
+        <div className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-full opacity-20 blur-sm block animate-arabic-float" />
+        <div className="absolute top-5 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm block animate-arabic-float" />
+        <div className="absolute bottom-1 right-0 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full opacity-20 blur-sm block animate-arabic-glow" />
+        <div className="absolute bottom-20 right-4 sm:right-10 w-8 h-8 sm:w-8 sm:h-8 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm block animate-arabic-glow" />
+        <div className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm block animate-arabic-rotate" />
       </div>
 
       <div className="container relative z-10 mx-auto tracking-wide flex flex-col gap-3">
