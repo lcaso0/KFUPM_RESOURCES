@@ -7,10 +7,12 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useMemo } from "react";
 import Link from "next/link";
+import React from "react";
 
-const Features = () => {
+const OptimizedFeatures = React.memo(() => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
   const features = useMemo(() => [
     {
       icon: <Shield className="w-8 h-8 text-primary" />,
@@ -121,7 +123,7 @@ const Features = () => {
               variants={cardVariants}
               whileHover={{
                 y: -8,
-                transition: { duration: 0.3, ease: "easeOut" }
+                transition: { duration: 0.3 }
               }}
             >
               <Card className="h-full group border-primary/50 border-2 hover:border-secondary/30 transition-all duration-300 hover:shadow-medium bg-card/80 backdrop-blur-sm">
@@ -200,6 +202,8 @@ const Features = () => {
       </div>
     </section>
   );
-};
+});
 
-export default Features;
+OptimizedFeatures.displayName = "OptimizedFeatures";
+
+export default OptimizedFeatures;

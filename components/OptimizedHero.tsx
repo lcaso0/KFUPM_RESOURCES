@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useMemo } from "react";
+import React from "react";
 
-const Hero = () => {
+const OptimizedHero = React.memo(() => {
   const { theme } = useTheme();
 
   const containerVariants = useMemo(() => ({
@@ -34,25 +35,38 @@ const Hero = () => {
 
   const letters = useMemo(() => ["K", "F", "U", "P", "M"], []);
 
-  const colors = useMemo(
-    () =>
-      theme === "dark"
-        ? ["#fafafa", "#d9a520", "#fafafa"]
-        : ["#2e9e75", "#d9a520", "#2e9e75"],
+  const colors = useMemo(() =>
+    theme === "dark"
+      ? ["#fafafa", "#d9a520", "#fafafa"]
+      : ["#2e9e75", "#d9a520", "#2e9e75"],
     [theme]
   );
+
+  const stats = useMemo(() => [
+    {
+      number: "1000+",
+      title: "Verified Resources",
+      titleAr: "موارد معتمدة",
+    },
+    {
+      number: "5000+",
+      title: "Active Students",
+      titleAr: "طالب نشط",
+    },
+    { number: "50+", title: "Departments", titleAr: "قسم أكاديمي" },
+  ], []);
+
+  const featurePills = useMemo(() => [
+    { icon: Shield, text: "Verified Content" },
+    { icon: BookOpen, text: "Academic Resources" },
+    { icon: Users, text: "Student Community" },
+  ], []);
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Enhanced Arabic-themed Background */}
-      <div className="absolute inset-0 arabic-calligraphy-bg" />
-
-      {/* Arabic Geometric Pattern Overlay */}
-      <div className="absolute inset-0 arabic-mosaic-overlay opacity-30 bg-secondary/20" />
-
       {/* Static Elements - Disabled animations for CPU optimization */}
       <div className="absolute inset-0">
         <div className="absolute top-48 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-full opacity-20 blur-sm block" />
@@ -130,11 +144,7 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4"
             variants={itemVariants}
           >
-            {[
-              { icon: Shield, text: "Verified Content" },
-              { icon: BookOpen, text: "Academic Resources" },
-              { icon: Users, text: "Student Community" },
-            ].map((item, index) => (
+            {featurePills.map((item, index) => (
               <motion.div
                 key={index}
                 className="flex items-center bg-accent/5 backdrop-blur-md rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-3 text-primary text-xs sm:text-sm lg:text-base border-4 border-accent/5"
@@ -202,19 +212,7 @@ const Hero = () => {
             className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 px-4 pb-4 md:pb-0 max-w-4xl mx-auto"
             variants={containerVariants}
           >
-            {[
-              {
-                number: "1000+",
-                title: "Verified Resources",
-                titleAr: "موارد معتمدة",
-              },
-              {
-                number: "5000+",
-                title: "Active Students",
-                titleAr: "طالب نشط",
-              },
-              { number: "50+", title: "Departments", titleAr: "قسم أكاديمي" },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 className="bg-primary/5 backdrop-blur-md rounded-2xl p-4 sm:p-6 border-4 border-primary/30 hover:border-primary/50 transition-all duration-300"
@@ -247,6 +245,8 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+});
 
-export default Hero;
+OptimizedHero.displayName = "OptimizedHero";
+
+export default OptimizedHero;

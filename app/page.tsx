@@ -1,6 +1,6 @@
-import Features from "@/components/Features";
+import OptimizedFeatures from "@/components/OptimizedFeatures";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
+import OptimizedHero from "@/components/OptimizedHero";
 import Navigation from "@/components/Navigation";
 
 export default function Home() {
@@ -8,8 +8,8 @@ export default function Home() {
     <div className="min-h-screen">
       <Navigation/>
       <main>
-        <Hero />
-        <Features />
+        <OptimizedHero />
+        <OptimizedFeatures />
       </main>
       <Footer />
     </div>

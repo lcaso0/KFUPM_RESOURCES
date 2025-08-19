@@ -685,37 +685,19 @@ html {
   }
 }
 
-/* .animate-arabic-float { */
-/*   animation: arabicFloat 6s ease-in-out infinite; */
-/* } */
-/**/
-/* .animate-arabic-glow { */
-/*   animation: arabicGlow 3s ease-in-out infinite; */
-/* } */
-/**/
-/* .animate-arabic-pattern { */
-/*   animation: arabicPattern 20s linear infinite; */
-/* } */
-/**/
-/* .animate-arabic-shimmer { */
-/*   animation: arabicShimmer 3s ease-in-out infinite; */
-/* } */
-/**/
-/* .animate-arabic-rotate { */
-/*   animation: arabicRotate 8s linear infinite; */
-/* } */
-/**/
-/* .animate-arabic-pulse { */
-/*   animation: arabicPulse 4s ease-in-out infinite; */
-/* } */
-/**/
-/* .animate-arabic-wave { */
-/*   animation: arabicWave 8s ease-in-out infinite; */
-/* } */
-/**/
-/* .animate-arabic-mosaic { */
-/*   animation: arabicMosaic 12s linear infinite; */
-/* } */
+/* Disabled continuous animations for CPU optimization */
+.animate-arabic-float,
+.animate-arabic-glow,
+.animate-arabic-pattern,
+.animate-arabic-shimmer,
+.animate-arabic-rotate,
+.animate-arabic-pulse,
+.animate-arabic-wave,
+.animate-arabic-mosaic {
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
 
   /* Sophisticated KFUPM Background System */
 .arabic-geometric-bg {
@@ -743,7 +725,8 @@ html {
       rgba(76, 55, 2, 0.05) 4px
     );
   background-size: 40px 40px;
-  animation: arabicPattern 15s linear infinite;
+  /* Disabled animation for CPU optimization */
+  animation: none;
 }
 
 .arabic-calligraphy-bg {
@@ -779,7 +762,8 @@ html {
       rgba(76, 55, 2, 0.06) 100px,
       rgba(76, 55, 2, 0.06) 101px
     );
-  animation: arabicPattern 25s linear infinite;
+  /* Disabled animation for CPU optimization */
+  animation: none;
 }
 
 .arabic-calligraphy-bg::after {
@@ -793,5 +777,6 @@ html {
     radial-gradient(ellipse at top left, rgba(217, 165, 32, 0.15) 0%, transparent 50%),
     radial-gradient(ellipse at bottom right, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
     radial-gradient(ellipse at center, rgba(158, 55%, 40%, 0.05) 0%, transparent 70%);
-  animation: arabicGlow 8s ease-in-out infinite;
+  /* Disabled animation for CPU optimization */
+  animation: none;
 }

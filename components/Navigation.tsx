@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, useClerk, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import ThemeToggler from "./ThemeToggler";
 import { motion } from "framer-motion";
 
