@@ -19,7 +19,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
               <motion.div 
-                 className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-gold-light rounded-md"
+                 className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-primary-light rounded-md"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
@@ -33,7 +33,7 @@ const Navigation = () => {
               <h1 className="font-cairo font-bold text-lg text-primary">
                 Resource Hub
               </h1>
-              <p className="font-noto-arabic text-sm text-muted-foreground">
+              <p className="font-noto-arabic text-sm text-secondary dark:text-muted-foreground">
                 مركز الموارد
               </p>
             </div>
@@ -43,25 +43,25 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-foreground hover:text-gold transition-colors font-cairo"
+              className="text-foreground hover:text-primary transition-colors font-cairo"
             >
               Home | الرئيسية
             </Link>
             <Link
               href="/resources"
-              className="text-foreground hover:text-gold transition-colors font-cairo"
+              className="text-foreground hover:text-primary transition-colors font-cairo"
             >
               Resources | الموارد
             </Link>
             <a
               href="#features"
-              className="text-foreground hover:text-gold transition-colors font-cairo"
+              className="text-foreground hover:text-primary transition-colors font-cairo"
             >
               Features | المميزات
             </a>
             <a
               href="#contact"
-              className="text-foreground hover:text-gold transition-colors font-cairo"
+              className="text-foreground hover:text-primary transition-colors font-cairo"
             >
               Contact | تواصل
             </a>
@@ -73,7 +73,7 @@ const Navigation = () => {
             <SignedOut>
               <Button
                 onClick={() => openSignIn()}
-                className="bg-gold text-charcoal hover:bg-gold/90 font-cairo"
+                className="bg-primary hover:bg-primary/90 font-cairo"
               >
                 Get Started | ابدأ الآن
               </Button>
@@ -94,7 +94,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground hover:text-gold transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,25 +107,25 @@ const Navigation = () => {
             <div className="flex flex-col space-y-4">
               <a
                 href="#home"
-                className="text-foreground hover:text-gold transition-colors font-cairo py-2"
+                className="text-foreground hover:text-primary transition-colors font-cairo py-2"
               >
                 Home | الرئيسية
               </a>
               <a
                 href="#features"
-                className="text-foreground hover:text-gold transition-colors font-cairo py-2"
+                className="text-foreground hover:text-primary transition-colors font-cairo py-2"
               >
                 Features | المميزات
               </a>
               <a
                 href="#resources"
-                className="text-foreground hover:text-gold transition-colors font-cairo py-2"
+                className="text-foreground hover:text-primary transition-colors font-cairo py-2"
               >
                 Resources | الموارد
               </a>
               <a
                 href="#contact"
-                className="text-foreground hover:text-gold transition-colors font-cairo py-2"
+                className="text-foreground hover:text-primary transition-colors font-cairo py-2"
               >
                 Contact | تواصل
               </a>
@@ -133,7 +133,7 @@ const Navigation = () => {
               <SignedOut>
                 <Button
                   onClick={() => openSignIn()}
-                  className="bg-gold text-charcoal hover:bg-gold/90 font-cairo"
+                  className="bg-primary hover:bg-primary/90 font-cairo"
                 >
                   Get Started | ابدأ الآن
                 </Button>

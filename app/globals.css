@@ -41,25 +41,18 @@ html {
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  --color-gold: hsl(var(--gold));
-  --color-gold-light: hsl(var(--gold-light));
-  --color-gold-dark: hsl(var(--gold-dark));
-
-  --color-brown: hsl(var(--brown));
-  --color-brown-light: hsl(var(--brown-light));
-  --color-brown-dark: hsl(var(--brown-dark));
-
-  --color-cream: hsl(var(--cream));
-  --color-cream-muted: hsl(var(--cream-muted));
-  --color-warm-white: hsl(var(--warm-white));
-
-  --color-charcoal: hsl(var(--charcoal));
-  --color-charcoal-light: hsl(var(--charcoal-light));
-  --color-charcoal-dark: hsl(var(--charcoal-dark));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-light: hsl(var(--primary-light));
+  --color-primary-dark: hsl(var(--primary-dark));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-light: hsl(var(--secondary-light));
+  --color-secondary-dark: hsl(var(--secondary-dark));
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-border: hsl(var(--border));
@@ -79,6 +72,26 @@ html {
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
+  /* Extended colors for both themes */
+  --color-gold: hsl(var(--gold));
+  --color-gold-light: hsl(var(--gold-light));
+  --color-gold-dark: hsl(var(--gold-dark));
+  --color-brown: hsl(var(--brown));
+  --color-brown-light: hsl(var(--brown-light));
+  --color-brown-dark: hsl(var(--brown-dark));
+  --color-green: hsl(var(--green));
+  --color-green-light: hsl(var(--green-light));
+  --color-green-dark: hsl(var(--green-dark));
+  --color-emerald: hsl(var(--emerald));
+  --color-emerald-light: hsl(var(--emerald-light));
+  --color-emerald-dark: hsl(var(--emerald-dark));
+  --color-cream: hsl(var(--cream));
+  --color-cream-muted: hsl(var(--cream-muted));
+  --color-warm-white: hsl(var(--warm-white));
+  --color-charcoal: hsl(var(--charcoal));
+  --color-charcoal-light: hsl(var(--charcoal-light));
+  --color-charcoal-dark: hsl(var(--charcoal-dark));
+
   --background-image-gradient-primary: var(--gradient-primary);
   --background-image-gradient-secondary: var(--gradient-secondary);
   --background-image-gradient-hero: var(--gradient-hero);
@@ -86,11 +99,13 @@ html {
   --background-image-gradient-arabic-gold: var(--gradient-arabic-gold);
   --background-image-gradient-warm: var(--gradient-warm);
   --background-image-gradient-dark: var(--gradient-dark);
-
   --box-shadow-soft: var(--shadow-soft);
   --box-shadow-medium: var(--shadow-medium);
   --box-shadow-strong: var(--shadow-strong);
   --box-shadow-glow: var(--shadow-glow);
+  --box-shadow-gold: var(--shadow-gold);
+  --box-shadow-brown: var(--shadow-brown);
+  --box-shadow-green: var(--shadow-green);
 }
 
 :root {
@@ -98,7 +113,107 @@ html {
 
   --radius: 0.75rem;
   
-  /* KFUPM Sophisticated Color Palette */
+  /* Sophisticated Light Mode - Greenish & Golden */
+  --background: 43 30% 98%; /* Warm white background */
+  --foreground: 35 25% 15%; /* Rich dark text */
+  --card: 43 25% 96%; /* Soft cream cards */
+  --card-foreground: 35 25% 12%; /* Dark text on cards */
+  --popover: 43 25% 94%; /* Light popover */
+  --popover-foreground: 35 25% 10%; /* Dark popover text */
+
+  /* Secondary: #d9a520 (KFUPM Gold) */
+  --secondary: 43 75% 48%; /* Rich gold */
+  --secondary-foreground: 43 25% 96%; /* Light text on gold */
+  --secondary-light: 43 85% 58%; /* Lighter gold */
+  --secondary-dark: 43 65% 38%; /* Darker gold */
+
+  /* Primary: #059669 (Elegant Green) */
+  --primary: 158 55% 40%; /* Sophisticated green */
+  --primary-foreground: 43 25% 96%; /* Light text on green */
+  --primary-light: 158 65% 50%; /* Lighter green */
+  --primary-dark: 158 45% 30%; /* Darker green */
+
+  /* Accent: #10b981 (Emerald) */
+  --accent: 158 60% 45%; /* Emerald accent */
+  --accent-foreground: 43 25% 96%;
+  --muted: 43 15% 90%; /* Light muted with green tint */
+  --muted-foreground: 35 20% 45%; /* Medium muted text */
+  --destructive: 0 60% 50%; /* Rich red */
+  --destructive-foreground: 43 25% 96%;
+  --border: 43 20% 85%; /* Subtle light border */
+  --input: 43 25% 94%; /* Light input background */
+  --ring: 43 75% 48%; /* Focus ring */
+
+  /* Extended Color Palette - Greenish & Golden */
+  --gold: 43 75% 48%; /* Rich gold */
+  --gold-light: 43 85% 58%;
+  --gold-dark: 43 65% 38%;
+  --green: 158 55% 40%; /* Elegant green */
+  --green-light: 158 65% 50%;
+  --green-dark: 158 45% 30%;
+  --emerald: 158 60% 45%; /* Emerald accent */
+  --emerald-light: 158 70% 55%;
+  --emerald-dark: 158 50% 35%;
+  --cream: 43 25% 96%; /* Light cream */
+  --cream-muted: 43 20% 85%; /* Muted cream */
+  --warm-white: 43 30% 98%; /* Pure warm white */
+  --charcoal: 35 25% 15%; /* Dark text color */
+  --charcoal-light: 35 20% 25%;
+  --charcoal-dark: 35 30% 8%;
+
+  /* Gradient System - Light Mode */
+  --gradient-primary: linear-gradient(135deg, var(--gold), var(--emerald));
+  --gradient-secondary: linear-gradient(135deg, var(--green), var(--green-light));
+  --gradient-hero: linear-gradient(135deg, 
+    var(--emerald) 0%, 
+    var(--gold) 35%, 
+    var(--green) 70%, 
+    var(--gold-dark) 100%
+  );
+  --gradient-arabic: linear-gradient(135deg, 
+    var(--warm-white) 0%, 
+    var(--cream) 30%, 
+    var(--gold-light) 70%, 
+    var(--gold) 100%
+  );
+  --gradient-arabic-gold: linear-gradient(135deg, 
+    var(--cream) 0%, 
+    var(--gold-light) 50%, 
+    var(--gold) 100%
+  );
+  --gradient-warm: linear-gradient(135deg, 
+    var(--warm-white) 0%, 
+    var(--cream) 50%, 
+    var(--gold-light) 100%
+  );
+  --gradient-dark: linear-gradient(135deg, 
+    var(--green-dark) 0%, 
+    var(--green) 100%
+  );
+
+  /* Background Patterns */
+  --background-hero: var(--gradient-hero);
+  --background-card: var(--cream);
+  --background-surface: var(--warm-white);
+  --background-subtle: var(--cream-muted);
+
+  /* Text Colors */
+  --text-primary: var(--charcoal);
+  --text-secondary: var(--charcoal-light);
+  --text-muted: var(--muted-foreground);
+  --text-accent: var(--gold);
+  --text-inverse: var(--warm-white);
+
+  /* Border & Shadow Colors */
+  --shadow-gold: 0 0 20px rgba(217, 165, 32, 0.15);
+  --shadow-green: 0 0 20px rgba(34, 197, 94, 0.1);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dark {
+  /* Original sophisticated dark palette - EXACTLY as before */
   --background: 35 20% 8%; /* Deep warm dark */
   --foreground: 43 30% 95%; /* Soft cream */
   --card: 35 15% 12%; /* Dark card background */
@@ -118,7 +233,7 @@ html {
   --secondary-light: 35 85% 25%; /* Lighter brown */
   --secondary-dark: 35 100% 8%; /* Darker brown */
 
-  /* Accent Colors */
+  /* Accent: Warm amber */
   --accent: 25 70% 45%; /* Warm amber */
   --accent-foreground: 35 20% 8%;
   --muted: 35 10% 20%; /* Muted dark */
@@ -143,7 +258,7 @@ html {
   --charcoal-light: 35 15% 15%;
   --charcoal-dark: 35 25% 5%;
 
-  /* Gradient System */
+  /* Gradient System - Dark Mode */
   --gradient-primary: linear-gradient(135deg, var(--gold), var(--gold-light));
   --gradient-secondary: linear-gradient(135deg, var(--brown), var(--brown-light));
   --gradient-hero: linear-gradient(135deg, 
@@ -195,38 +310,6 @@ html {
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
   --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.4);
   --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.5);
-}
-
-.dark {
-  /* Dark mode uses the same sophisticated palette with adjusted brightness */
-  --background: 35 15% 5%; /* Even darker */
-  --foreground: 43 25% 90%; /* Slightly dimmer cream */
-  --card: 35 12% 8%; /* Darker cards */
-  --card-foreground: 43 25% 90%;
-  --popover: 35 12% 10%;
-  --popover-foreground: 43 25% 90%;
-  --primary: 43 74% 45%; /* Slightly muted gold */
-  --primary-foreground: 35 15% 5%;
-  --secondary: 35 90% 12%; /* Darker brown */
-  --secondary-foreground: 43 25% 90%;
-  --muted: 35 8% 15%;
-  --muted-foreground: 43 15% 70%;
-  --accent: 25 60% 40%;
-  --accent-foreground: 35 15% 5%;
-  --destructive: 0 60% 45%;
-  --destructive-foreground: 43 25% 90%;
-  --border: 35 10% 20%;
-  --input: 35 10% 12%;
-  --ring: 43 74% 45%;
-  --sidebar-background: 35 12% 8%;
-  --sidebar-foreground: 43 25% 90%;
-  --sidebar-primary: 43 74% 45%;
-  --sidebar-primary-foreground: 35 15% 5%;
-  --sidebar-accent: 35 15% 15%;
-  --sidebar-accent-foreground: 43 74% 45%;
-  --sidebar-border: 35 10% 20%;
-  --sidebar-ring: 43 74% 45%;
-  --sidebar: hsl(35 12% 8%);
 }
 
 /* Custom animations */
@@ -664,7 +747,12 @@ html {
 }
 
 .arabic-calligraphy-bg {
-  background: var(--gradient-hero);
+  background: linear-gradient(135deg, 
+    #10b981 0%, 
+    #d9a520 35%, 
+    #059669 70%, 
+    #b45309 100%
+  );
   position: relative;
   overflow: hidden;
 }
@@ -681,15 +769,15 @@ html {
       90deg,
       transparent,
       transparent 100px,
-      rgba(217, 165, 32, 0.03) 100px,
-      rgba(217, 165, 32, 0.03) 101px
+      rgba(217, 165, 32, 0.08) 100px,
+      rgba(217, 165, 32, 0.08) 101px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 100px,
-      rgba(76, 55, 2, 0.03) 100px,
-      rgba(76, 55, 2, 0.03) 101px
+      rgba(76, 55, 2, 0.06) 100px,
+      rgba(76, 55, 2, 0.06) 101px
     );
   animation: arabicPattern 25s linear infinite;
 }
@@ -702,7 +790,8 @@ html {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(ellipse at top left, rgba(217, 165, 32, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(76, 55, 2, 0.1) 0%, transparent 50%);
+    radial-gradient(ellipse at top left, rgba(217, 165, 32, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at center, rgba(158, 55%, 40%, 0.05) 0%, transparent 70%);
   animation: arabicGlow 8s ease-in-out infinite;
 }

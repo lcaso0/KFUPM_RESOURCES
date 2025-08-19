@@ -26,7 +26,7 @@ export default function ResourceCard({ title, course, type, semester }: Resource
           <span>{semester}</span>
         </div>
       </CardContent>
-      <CardFooter className="p-6 bg-gray-50">
+      <CardFooter className="p-6 bg-muted">
         <Button className="w-full">تحميل</Button>
       </CardFooter>
     </Card>

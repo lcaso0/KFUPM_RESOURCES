@@ -78,7 +78,7 @@ export default function ResourceFolder({ title, course, description }: Props) {
               <Card className="w-full h-full flex items-center justify-center p-4">
                 <CardHeader className="flex flex-col items-center text-center">
                   <CardTitle className="text-lg font-semibold mb-2 text-primary">{title}</CardTitle>
-                   <p className="text-sm text-white leading-relaxed">
+                    <p className="text-sm text-foreground leading-relaxed">
                     {description}
                   </p>
                 </CardHeader>
@@ -93,10 +93,10 @@ export default function ResourceFolder({ title, course, description }: Props) {
         <Card className="w-full">
           <CardHeader className="flex flex-col items-center text-center py-6">
             <div className="mb-2">{getIconComponent(course)}</div>
-            <CardTitle className="text-lg font-semibold mb-3 text-white">{course}</CardTitle>
+            <CardTitle className="text-lg font-semibold mb-3 text-card-foreground">{course}</CardTitle>
             <div className="space-y-2">
                <h3 className="text-base font-semibold text-primary">{title}</h3>
-               <p className="text-sm text-white leading-relaxed max-w-xs">
+               <p className="text-sm text-card-foreground leading-relaxed max-w-xs">
                 {description}
               </p>
             </div>
