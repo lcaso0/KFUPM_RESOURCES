@@ -69,7 +69,7 @@ const Hero = () => {
           animate="animate"
         />
         <motion.div
-          className="absolute bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full blur-sm hidden lg:block animate-arabic-glow"
+          className="absolute bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-secondary dark:bg-primary/20 rounded-full blur-sm hidden lg:block animate-arabic-glow"
           variants={floatingVariants}
           animate="animate"
           transition={{ delay: 1 }}

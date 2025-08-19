@@ -36,7 +36,7 @@ export default function Header() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary font-diwani drop-shadow-2xl">
           المصادر الأكاديمية
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl mt-2 font-noto-arabic text-foreground drop-shadow-lg">
+        <p className="text-lg text-secondary sm:text-xl md:text-2xl mt-2 font-noto-arabic dark:text-foreground drop-shadow-lg">
           موارد ومصادر لطلاب جامعة الملك فهد للبترول والمعادن
         </p>
       </div>
