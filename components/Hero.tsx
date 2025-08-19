@@ -32,17 +32,17 @@ const Hero = () => {
     },
   };
 
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        delay: 0.75,
-        ease: easeInOut,
-      },
-    },
-  };
+  // const floatingVariants = {
+  //   animate: {
+  //     y: [-10, 10, -10],
+  //     transition: {
+  //       duration: 3,
+  //       repeat: Infinity,
+  //       delay: 0.75,
+  //       ease: easeInOut,
+  //     },
+  //   },
+  // };
 
   const letters = ["K", "F", "U", "P", "M"];
 
@@ -90,7 +90,7 @@ const Hero = () => {
                   animate={{ y: [0, -8, 0] }}
                   transition={{
                     duration: 0.6,
-                    repeat: Infinity,
+                    // repeat: Infinity,
                     repeatDelay: 1,
                     delay: i * 0.2,
                   }}
@@ -102,7 +102,7 @@ const Hero = () => {
                     }}
                     transition={{
                       duration: 0.6,
-                      repeat: Infinity,
+                      // repeat: Infinity,
                       repeatDelay: 1,
                       delay: i * 0.2,
                     }}

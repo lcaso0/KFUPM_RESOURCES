@@ -685,37 +685,37 @@ html {
   }
 }
 
-.animate-arabic-float {
-  animation: arabicFloat 6s ease-in-out infinite;
-}
-
-.animate-arabic-glow {
-  animation: arabicGlow 3s ease-in-out infinite;
-}
-
-.animate-arabic-pattern {
-  animation: arabicPattern 20s linear infinite;
-}
-
-.animate-arabic-shimmer {
-  animation: arabicShimmer 3s ease-in-out infinite;
-}
-
-.animate-arabic-rotate {
-  animation: arabicRotate 8s linear infinite;
-}
-
-.animate-arabic-pulse {
-  animation: arabicPulse 4s ease-in-out infinite;
-}
-
-.animate-arabic-wave {
-  animation: arabicWave 8s ease-in-out infinite;
-}
-
-.animate-arabic-mosaic {
-  animation: arabicMosaic 12s linear infinite;
-}
+/* .animate-arabic-float { */
+/*   animation: arabicFloat 6s ease-in-out infinite; */
+/* } */
+/**/
+/* .animate-arabic-glow { */
+/*   animation: arabicGlow 3s ease-in-out infinite; */
+/* } */
+/**/
+/* .animate-arabic-pattern { */
+/*   animation: arabicPattern 20s linear infinite; */
+/* } */
+/**/
+/* .animate-arabic-shimmer { */
+/*   animation: arabicShimmer 3s ease-in-out infinite; */
+/* } */
+/**/
+/* .animate-arabic-rotate { */
+/*   animation: arabicRotate 8s linear infinite; */
+/* } */
+/**/
+/* .animate-arabic-pulse { */
+/*   animation: arabicPulse 4s ease-in-out infinite; */
+/* } */
+/**/
+/* .animate-arabic-wave { */
+/*   animation: arabicWave 8s ease-in-out infinite; */
+/* } */
+/**/
+/* .animate-arabic-mosaic { */
+/*   animation: arabicMosaic 12s linear infinite; */
+/* } */
 
   /* Sophisticated KFUPM Background System */
 .arabic-geometric-bg {
