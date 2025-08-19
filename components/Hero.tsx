@@ -76,36 +76,6 @@ const Hero = () => {
         />
       </div>
 
-      {/* Falling KFUPM Particles */}
-      {/* {[...Array(25)].map((_, i) => ( */}
-      {/*   <motion.div */}
-      {/*     key={`particle-${i}`} */}
-      {/*     className="absolute text-gold/50 font-bold pointer-events-none" */}
-      {/*     initial={{ */}
-      {/*       y: -100, */}
-      {/*       x: Math.random() * window.innerWidth, */}
-      {/*       opacity: 0, */}
-      {/*     }} */}
-      {/*     animate={{ */}
-      {/*       y: window.innerHeight + 100, */}
-      {/*       opacity: [0, 0.8, 0.8, 0], */}
-      {/*       rotate: Math.random() * 360, */}
-      {/*     }} */}
-      {/*     transition={{ */}
-      {/*       duration: 12 + Math.random() * 8, */}
-      {/*       repeat: Infinity, */}
-      {/*       delay: Math.random() * 12, */}
-      {/*       ease: "linear", */}
-      {/*     }} */}
-      {/*     style={{ */}
-      {/*       fontSize: `${18 + Math.random() * 20}px`, */}
-      {/*       left: `${Math.random() * 100}%`, */}
-      {/*     }} */}
-      {/*   > */}
-      {/*     {["KFUPM", "#67", "📚", "🎓", "📖", "✨", "🏛️", "🔬", "⚗️", "📊", "📝", "🎯"][Math.floor(Math.random() * 12)]} */}
-      {/*   </motion.div> */}
-      {/* ))} */}
-
       <div className="container pt-24 md:pt-0 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           className="max-w-5xl mx-auto text-center"

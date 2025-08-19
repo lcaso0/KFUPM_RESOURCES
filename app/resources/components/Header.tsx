@@ -15,23 +15,6 @@ export default function Header() {
         <div className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full opacity-20 blur-sm hidden lg:block animate-arabic-rotate" />
       </div>
 
-      {/* Falling Particles - Same as Hero */}
-      {/* {[...Array(15)].map((_, i) => ( */}
-      {/*   <div */}
-      {/*     key={`header-particle-${i}`} */}
-      {/*      className="absolute text-secondary/50 font-bold pointer-events-none animate-arabic-float" */}
-      {/*     style={{ */}
-      {/*       top: `${-50 + Math.random() * 50}px`, */}
-      {/*       left: `${Math.random() * 100}%`, */}
-      {/*       fontSize: `${16 + Math.random() * 16}px`, */}
-      {/*       animationDelay: `${Math.random() * 10}s`, */}
-      {/*       animationDuration: `${10 + Math.random() * 10}s` */}
-      {/*     }} */}
-      {/*   > */}
-      {/*     {["KFUPM", "#67", "📚", "🎓", "📖"][Math.floor(Math.random() * 5)]} */}
-      {/*   </div> */}
-      {/* ))} */}
-
       <div className="container relative z-10 mx-auto tracking-wide flex flex-col gap-3">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary font-diwani drop-shadow-2xl">
           المصادر الأكاديمية
