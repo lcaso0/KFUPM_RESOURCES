@@ -170,7 +170,6 @@ const OptimizedHero = React.memo(() => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="!border-primary bg-white/5 text-primary hover:!bg-primary hover:text-base font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px] border-2 hover:!border-primary-dark transition-all duration-300"
                 >
                   استكشف الموارد
                 </Button>
