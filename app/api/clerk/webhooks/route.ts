@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       "svix-id": svix_id,
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,
-    } as WebhookRequiredHeaders);
+    });
   } catch (err) {
     console.error("Error verifying webhook:", err);
     return new NextResponse("Invalid signature", { status: 400 });
