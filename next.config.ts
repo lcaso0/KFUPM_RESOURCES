@@ -47,24 +47,15 @@ const nextConfig: NextConfig = {
     return config;
   },
 
-  // Headers for performance
+  // Minimal caching for dynamic content site
   async headers() {
     return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
       {
         source: "/fonts/(.*)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=86400", // 1 day for fonts only
           },
         ],
       },

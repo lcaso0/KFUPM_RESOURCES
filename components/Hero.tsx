@@ -86,7 +86,7 @@ const Hero = () => {
                   className="inline-block"
                 >
                   <motion.span
-                    style={{ color: colors[0] }}
+                    style={{ color: colors }}
                     className="inline-block"
                   >
                     {letter}

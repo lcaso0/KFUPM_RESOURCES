@@ -4,13 +4,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Shield, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import React from "react";
 
 const OptimizedHero = React.memo(() => {
-  const { theme } = useTheme();
-
   const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
@@ -34,13 +31,6 @@ const OptimizedHero = React.memo(() => {
   }), []);
 
   const letters = useMemo(() => ["K", "F", "U", "P", "M"], []);
-
-  const colors = useMemo(() =>
-    theme === "dark"
-      ? ["#fafafa", "#d9a520", "#fafafa"]
-      : ["#2e9e75", "#d9a520", "#2e9e75"],
-    [theme]
-  );
 
   const stats = useMemo(() => [
     {
@@ -88,25 +78,7 @@ const OptimizedHero = React.memo(() => {
           {/* Main Heading */}
           <motion.div variants={itemVariants}>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-primary dark:text-white mb-4 sm:mb-6 leading-tight px-2 tracking-wide">
-              {letters.map((letter, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ y: 0 }}
-                  animate={{ y: 0 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: i * 0.2,
-                  }}
-                  className="inline-block"
-                >
-                  <motion.span
-                    style={{ color: colors[0] }}
-                    className="inline-block"
-                  >
-                    {letter}
-                  </motion.span>
-                </motion.span>
-              ))}{" "}
+              <span className="text-secondary dark:text-primary">KFUPM</span> {" "}
               Resource Hub
             </h1>
             <motion.h2
