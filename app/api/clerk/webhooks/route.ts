@@ -1,47 +1,82 @@
-import { Webhook } from "svix"; // Clerk uses Svix for webhooks
-import db from "@/db";
-import { users } from "@/db/schema";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+import { Webhook, WebhookRequiredHeaders } from "svix";
+import db from "@/db"; // your drizzle db instance
+import { users } from "@/db/schema"; // your drizzle schema
+import { eq } from "drizzle-orm";
 
-export default async function handler(req, res) {
-  const payload = req.body;
-  const headers = req.headers;
+export async function POST(req: Request) {
+  // 1. Get headers for svix verification
+  const headersList = await headers();
+  const svix_id = headersList.get("svix-id");
+  const svix_timestamp = headersList.get("svix-timestamp");
+  const svix_signature = headersList.get("svix-signature");
 
-  const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET!);
-  let evt;
-
-  try {
-    evt = wh.verify(JSON.stringify(payload), headers);
-  } catch (err) {
-    return res.status(400).json({ error: "Invalid webhook" });
+  if (!svix_id || !svix_timestamp || !svix_signature) {
+    return new NextResponse("Missing svix headers", { status: 400 });
   }
 
-  const eventType = evt.type;
-  const data = evt.data;
+  // 2. Read the body
+  const payload = await req.json();
+  const body = JSON.stringify(payload);
+
+  // 3. Verify webhook
+  const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET || "");
+  let evt: any;
+
+  try {
+    evt = wh.verify(body, {
+      "svix-id": svix_id,
+      "svix-timestamp": svix_timestamp,
+      "svix-signature": svix_signature,
+    } as WebhookRequiredHeaders);
+  } catch (err) {
+    console.error("Error verifying webhook:", err);
+    return new NextResponse("Invalid signature", { status: 400 });
+  }
+
+  // 4. Handle event types from Clerk
+  const eventType: string = evt.type;
 
   if (eventType === "user.created") {
-    await db.insert(users).values({
-      clerkId: data.id,
-      email: data.email_addresses[0].email_address,
-      fullName: data.first_name + " " + data.last_name,
-      imageUrl: data.image_url,
-    });
+    const { id, email_addresses, first_name, last_name, image_url } = evt.data;
+
+    await db
+      .insert(users)
+      .values({
+        clerkId: id,
+        email: email_addresses?.[0]?.email_address,
+        fullName: `${first_name} ${last_name}`,
+        imageUrl: image_url,
+      })
+      .onConflictDoUpdate({
+        target: users.id,
+        set: {
+          email: email_addresses?.[0]?.email_address,
+          fullName: `${first_name} ${last_name}`,
+          imageUrl: image_url,
+        },
+      });
   }
 
   if (eventType === "user.updated") {
+    const { id, email_addresses, first_name, last_name, image_url } = evt.data;
+
     await db
       .update(users)
       .set({
-        email: data.email_addresses[0].email_address,
-        fullName: data.first_name + " " + data.last_name,
-        imageUrl: data.image_url,
-        updatedAt: new Date(),
+        email: email_addresses?.[0]?.email_address,
+        fullName: `${first_name} ${last_name}`,
+        imageUrl: image_url,
       })
-      .where(users.clerkId.eq(data.id));
+      .where(eq(users.id, id));
   }
 
   if (eventType === "user.deleted") {
-    await db.delete(users).where(users.clerkId.eq(data.id));
+    const { id } = evt.data;
+
+    await db.delete(users).where(eq(users.id, id));
   }
 
-  return res.json({ success: true });
+  return NextResponse.json({ success: true });
 }
