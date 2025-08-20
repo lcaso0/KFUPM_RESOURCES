@@ -179,7 +179,6 @@ const Hero = () => {
               <Link href="/resources">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary-dark font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-primary w-full sm:w-auto min-w-[200px] transition-all duration-300"
                 >
                   Explore Resources
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
@@ -197,7 +196,6 @@ const Hero = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="!border-primary bg-white/5 text-primary hover:!bg-primary hover:text-base font-cairo text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px] border-2 hover:!border-primary-dark transition-all duration-300"
                 >
                   استكشف الموارد
                 </Button>
