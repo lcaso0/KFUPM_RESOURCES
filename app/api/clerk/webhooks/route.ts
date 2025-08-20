@@ -22,14 +22,6 @@ export async function POST(req: NextRequest) {
           fullName: `${first_name} ${last_name}`,
           imageUrl: image_url,
         })
-        .onConflictDoUpdate({
-          target: users.clerkId,
-          set: {
-            email: email_addresses?.[0]?.email_address,
-            fullName: `${first_name} ${last_name}`,
-            imageUrl: image_url,
-          },
-        });
     }
 
     if (eventType === "user.updated") {
