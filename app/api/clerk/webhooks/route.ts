@@ -67,13 +67,13 @@ export async function POST(req: Request) {
         fullName: `${first_name} ${last_name}`,
         imageUrl: image_url,
       })
-      .where(eq(users.id, id));
+      .where(eq(users.clerkId, id));
   }
 
   if (eventType === "user.deleted") {
     const { id } = evt.data;
 
-    await db.delete(users).where(eq(users.id, id));
+    await db.delete(users).where(eq(users.clerkId, id));
   }
 
   return NextResponse.json({ success: true });
