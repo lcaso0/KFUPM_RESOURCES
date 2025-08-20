@@ -2,18 +2,18 @@
 
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, useClerk, UserButton } from "@clerk/nextjs";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState, useCallback, useMemo } from "react";
+import { useState } from "react";
 import ThemeToggler from "./ThemeToggler";
-import { motion } from "framer-motion";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { openSignIn } = useClerk();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="bg-background/95 backdrop-blur-sm border-b border-border w-full">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

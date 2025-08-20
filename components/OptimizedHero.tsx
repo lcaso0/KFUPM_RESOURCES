@@ -30,8 +30,6 @@ const OptimizedHero = React.memo(() => {
     },
   }), []);
 
-  const letters = useMemo(() => ["K", "F", "U", "P", "M"], []);
-
   const stats = useMemo(() => [
     {
       number: "1000+",
@@ -55,7 +53,7 @@ const OptimizedHero = React.memo(() => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[calc(100vh-4rem)]  flex items-center justify-center overflow-hidden"
     >
       {/* Static Elements - Disabled animations for CPU optimization */}
       <div className="absolute inset-0">
@@ -68,7 +66,7 @@ const OptimizedHero = React.memo(() => {
         <div className="absolute top-1/2 left-8 sm:left-20 w-10 h-10 sm:w-12 sm:h-12 bg-secondary dark:bg-primary rounded-full opacity-20 blur-sm block" />
       </div>
 
-      <div className="container pt-24 md:pt-0 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           className="max-w-5xl mx-auto text-center"
           variants={containerVariants}

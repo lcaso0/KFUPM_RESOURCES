@@ -7,7 +7,7 @@ import { UploadIcon } from "lucide-react";
 
 export default function Resources() {
   return (
-    <div className="min-h-screen pt-16 bg-background">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <Header />
       <main>
