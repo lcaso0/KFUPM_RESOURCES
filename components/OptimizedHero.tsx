@@ -75,7 +75,7 @@ const OptimizedHero = React.memo(() => {
         >
           {/* Main Heading */}
           <motion.div variants={itemVariants}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-primary dark:text-white mb-4 sm:mb-6 leading-tight px-2 tracking-wide">
+            <h1 className="pt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-primary dark:text-white mb-4 sm:mb-6 leading-tight px-2 tracking-wide">
               <span className="text-secondary dark:text-primary">KFUPM</span> {" "}
               Resource Hub
             </h1>
