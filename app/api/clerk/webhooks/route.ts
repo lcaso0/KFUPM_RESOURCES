@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Webhook, WebhookRequiredHeaders } from "svix";
-import db from "@/db"; // your drizzle db instance
+import db from "@/db"; 
 import { users } from "@/db/schema"; // your drizzle schema
 import { eq } from "drizzle-orm";
 
