@@ -10,27 +10,33 @@ import { useMemo } from "react";
 const Hero = () => {
   const { theme } = useTheme();
 
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          delayChildren: 0.3,
+          staggerChildren: 0.2,
+        },
       },
-    },
-  }), []);
+    }),
+    [],
+  );
 
-  const itemVariants = useMemo(() => ({
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
+  const itemVariants = useMemo(
+    () => ({
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.6,
+        },
       },
-    },
-  }), []);
+    }),
+    [],
+  );
 
   const letters = useMemo(() => ["K", "F", "U", "P", "M"], []);
 
@@ -39,7 +45,7 @@ const Hero = () => {
       theme === "dark"
         ? ["#fafafa", "#d9a520", "#fafafa"]
         : ["#2e9e75", "#d9a520", "#2e9e75"],
-    [theme]
+    [theme],
   );
 
   return (
@@ -86,7 +92,9 @@ const Hero = () => {
                   className="inline-block"
                 >
                   <motion.span
-                    style={{ color: colors }}
+                    animate={{
+                      color: colors,
+                    }}
                     className="inline-block"
                   >
                     {letter}
