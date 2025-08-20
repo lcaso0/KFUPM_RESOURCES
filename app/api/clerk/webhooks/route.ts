@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
           imageUrl: image_url,
         })
         .onConflictDoUpdate({
-          target: users.id,
+          target: users.clerkId,
           set: {
             email: email_addresses?.[0]?.email_address,
             fullName: `${first_name} ${last_name}`,
