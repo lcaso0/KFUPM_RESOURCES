@@ -892,3 +892,9 @@ html {
 .btn-icon {
   @apply w-4 h-4 sm:w-5 sm:h-5;
 }
+
+@media (max-height: 800px) {
+  .hero-padding {
+    @apply pt-4;
+  }
+}
