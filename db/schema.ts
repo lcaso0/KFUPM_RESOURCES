@@ -77,8 +77,12 @@ export const folders = pgTable("folders", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("folder_name").notNull(),
   description: text("description"),
-  communityId: uuid("community_id").notNull(),
-  parentId: uuid("parent_id").references((): any => folders.id),
+  communityId: uuid("community_id")
+    .notNull()
+    .references(() => communities.id, { onDelete: "cascade" }),
+  parentId: uuid("parent_id").references((): any => folders.id, {
+    onDelete: "cascade",
+  }),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -101,8 +105,12 @@ export const resources = pgTable("resources", {
   title: text("title").notNull(),
   description: text("description"),
   content: text("content").notNull(),
-  communityId: uuid("community_id").notNull(),
-  folderId: uuid("folder_id"),
+  communityId: uuid("community_id")
+    .notNull()
+    .references(() => communities.id, { onDelete: "cascade" }),
+  folderId: uuid("folder_id").references((): any => folders.id, {
+    onDelete: "cascade",
+  }),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
