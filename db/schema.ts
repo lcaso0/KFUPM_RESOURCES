@@ -44,6 +44,7 @@ export const usersToCommunities = pgTable(
     communityId: uuid("community_id")
       .notNull()
       .references(() => communities.id),
+    role: varchar("role", { length: 10 }).notNull().default("member"), // 'admin', 'member'
   },
   (t) => [primaryKey({ columns: [t.userId, t.communityId] })],
 );
@@ -104,7 +105,7 @@ export const resources = pgTable("resources", {
   folderId: uuid("folder_id"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
-})
+});
 
 export const resourcesRelations = relations(resources, ({ one }) => ({
   folder: one(folders, {
