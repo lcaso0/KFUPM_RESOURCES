@@ -16,7 +16,7 @@ import {
 import { ChevronDownIcon, DoorOpen, SlashIcon } from "lucide-react";
 import Link from "next/link";
 
-export default function ResourcesBreadCrumbs() {
+export default function ResourcesBreadCrumbs({communityName}: {communityName: string}) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -25,7 +25,7 @@ export default function ResourcesBreadCrumbs() {
             <Link href="/">
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
-                  Public
+                  {communityName}
                   <ChevronDownIcon />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="font-bold" align="start">
