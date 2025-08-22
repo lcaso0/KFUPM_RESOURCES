@@ -1,6 +1,6 @@
 import db from "@/db";
-import { communities } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { communities, folders } from "@/db/schema";
+import { eq, isNull } from "drizzle-orm";
 import ResourcesList from "./components/ResourcesList";
 
 interface Params {
@@ -16,7 +16,9 @@ export default async function CommunityPage({ params }: Params) {
   const community = await db.query.communities.findFirst({
     where: eq(communities.id, communityId),
     with: {
-      folders: true
+      folders: {
+        where: isNull(folders.parentId)
+      }
     }
   });
 
@@ -26,5 +28,5 @@ export default async function CommunityPage({ params }: Params) {
 
   console.log("Community:", community);
 
-  return <ResourcesList />;
+  return <ResourcesList folders={community.folders} />;
 }

@@ -1,19 +1,13 @@
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import ResourceFolder from "./ResourceFolder";
+import { Folder } from "@/lib/types";
 
-const folders = [
-  { title: "ملخص الوحدة الأولى", course: "MATH101", description: "ملخص" },
-  { title: "اختبار فصلي أول", course: "PHYS101", description: "اختبار"},
-  { title: "واجب بيتي محلول", course: "ICS108", description: "واجب"},
-  { title: "ملاحظات المحاضرة", course: "CHEM101", description: "ملاحظات"},
-  { title: "ملخص الوحدة الثانية", course: "MATH101", description: "ملخص"},
-  { title: "اختبار فصلي ثاني", course: "PHYS101", description: "اختبار"},
-  { title: "اختبار فصلي ثاني", course: "PE101", description: "اختبار"},
-  { title: "اختبار فصلي ثاني", course: "CS888", description: "اختبار"},
-];
+interface Props {
+  folders: Folder[]
+}
 
-export default function ResourcesList() {
+export default function ResourcesList({ folders }: Props) {
   return (
     <div className="container mx-auto px-6 py-12">
       <div className="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -50,9 +44,9 @@ export default function ResourcesList() {
           </Select>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {folders.map((resource, index) => (
-          <ResourceFolder key={index} {...resource} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {folders.map((folder) => (
+          <ResourceFolder key={folder.id} folder={folder} />
         ))}
       </div>
     </div>

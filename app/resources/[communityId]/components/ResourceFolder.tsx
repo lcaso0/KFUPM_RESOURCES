@@ -1,25 +1,20 @@
-'use client'
+"use client";
 
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Folder } from "@/lib/types";
 import { motion } from "framer-motion";
 import {
   BicepsFlexed,
   FlaskConical,
-  Folder,
+  Folder as FolderIcon,
   Laptop,
   Pi,
-  Radiation
+  Radiation,
 } from "lucide-react";
 import { useState } from "react";
 
-interface Props {
-  title: string;
-  course: string;
-  description: string;
-}
-
 const getIconComponent = (course: string) => {
-  switch (course.replace(/[0-9]/g, "")) {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
     case "ICS":
       return <Laptop className="text-blue-500" size={36} />;
     case "CHEM":
@@ -31,11 +26,15 @@ const getIconComponent = (course: string) => {
     case "PE":
       return <BicepsFlexed className="text-orange-500" size={36} />;
     default:
-      return <Folder className="text-gray-500" size={36} />;
+      return <FolderIcon className="text-gray-500" size={36} />;
   }
 };
 
-export default function ResourceFolder({ title, course, description }: Props) {
+interface Props {
+  folder: Folder;
+}
+
+export default function ResourceFolder({ folder }: Props) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -62,8 +61,10 @@ export default function ResourceFolder({ title, course, description }: Props) {
             >
               <Card className="w-full h-full flex items-center justify-center">
                 <CardHeader className="flex flex-col items-center text-center">
-                  <div className="mb-2">{getIconComponent(course)}</div>
-                  <CardTitle className="text-lg font-semibold">{course}</CardTitle>
+                  <div className="mb-2">{getIconComponent(folder.name)}</div>
+                  <CardTitle className="text-lg font-semibold">
+                    {folder.name}
+                  </CardTitle>
                 </CardHeader>
               </Card>
             </div>
@@ -71,16 +72,18 @@ export default function ResourceFolder({ title, course, description }: Props) {
             {/* Back of card */}
             <div
               className="absolute w-full h-full"
-              style={{ 
+              style={{
                 backfaceVisibility: "hidden",
-                transform: "rotateY(180deg)"
+                transform: "rotateY(180deg)",
               }}
             >
               <Card className="w-full h-full flex items-center justify-center p-4">
-                <CardHeader className="flex flex-col items-center text-center">
-                  <CardTitle className="text-lg font-semibold mb-2 text-primary">{title}</CardTitle>
-                    <p className="text-sm text-foreground leading-relaxed">
-                    {description}
+                <CardHeader className="flex flex-col items-center text-center w-full">
+                  <CardTitle className="text-lg font-semibold mb-2 text-primary">
+                    {folder.title}
+                  </CardTitle>
+                  <p className="text-sm text-foreground leading-relaxed">
+                    {folder.description}
                   </p>
                 </CardHeader>
               </Card>
@@ -93,12 +96,14 @@ export default function ResourceFolder({ title, course, description }: Props) {
       <div className="md:hidden">
         <Card className="w-full">
           <CardHeader className="flex flex-col items-center text-center py-6">
-            <div className="mb-2">{getIconComponent(course)}</div>
-            <CardTitle className="text-lg font-semibold mb-3 text-card-foreground">{course}</CardTitle>
+            <div className="mb-2">{getIconComponent(folder.name)}</div>
+            <CardTitle className="text-lg font-semibold mb-3 text-card-foreground">
+              {folder.name}
+            </CardTitle>
             <div className="space-y-2">
-               <h3 className="text-base font-semibold text-primary">{title}</h3>
-               <p className="text-sm text-card-foreground leading-relaxed max-w-xs">
-                {description}
+              <h3 className="text-base font-semibold text-primary">{folder.title}</h3>
+              <p className="text-sm text-card-foreground leading-relaxed max-w-xs">
+                {folder.description}
               </p>
             </div>
           </CardHeader>

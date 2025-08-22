@@ -27,13 +27,14 @@ async function main() {
     .insert(communities)
     .values({
       name: "Public Community",
-      code: "PUB123", // make random in prod
+      code: "PUB", // make random in prod
       description: "Default public community",
       authorId: user.id,
     })
     .returning();
 
   console.log("Created community:", community.name);
+  // const [community] = await db.select().from(communities).where(eq(communities.code, "PUB"));
 
   // 3. Join the user into the community as admin
   await db.insert(usersToCommunities).values({
@@ -48,7 +49,8 @@ async function main() {
   const [parentFolder] = await db
     .insert(folders)
     .values({
-      name: "Lecture Notes",
+      title: "First Programming Course",
+      name: "ICS104",
       description: "All lecture notes for the semester",
       communityId: community.id,
     })
@@ -57,8 +59,9 @@ async function main() {
   const [childFolder] = await db
     .insert(folders)
     .values({
-      name: "Week 1",
-      description: "Notes for week 1",
+      name: "Old Exams",
+      title: "Exams for ICS104",
+      description: "Collection of old exams",
       communityId: community.id,
       parentId: parentFolder.id,
     })

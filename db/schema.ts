@@ -76,6 +76,7 @@ export const communitiesRelations = relations(communities, ({ one, many }) => ({
 export const folders = pgTable("folders", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("folder_name").notNull(),
+  title: text("folder_title").notNull(),
   description: text("description"),
   communityId: uuid("community_id")
     .notNull()
@@ -87,16 +88,22 @@ export const folders = pgTable("folders", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+type Folders = InferResultType<'user', { posts: true }>
+
 export const foldersRelations = relations(folders, ({ one, many }) => ({
   community: one(communities, {
     fields: [folders.communityId],
     references: [communities.id],
+    relationName: "community"
   }),
   parentFolder: one(folders, {
     fields: [folders.parentId],
     references: [folders.id],
+    relationName: "parentFolder"
   }),
-  children: many(folders),
+  children: many(folders, {
+    relationName: "parentFolder"
+  }),
 }));
 
 // Resources Table

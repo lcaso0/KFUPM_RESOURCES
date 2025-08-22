@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ResourcesRootPage() {
-  redirect("/resources/4d80ded2-efef-471b-82e4-7cdcc3c62488");
+  redirect("/resources/a931b4c1-60ae-4ae6-92ee-d2469c036470");
 }
