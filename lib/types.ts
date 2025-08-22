@@ -4,14 +4,14 @@ import * as schema from '@/db/schema';
 type Schema = typeof schema;
 type TSchema = ExtractTablesWithRelations<Schema>;
 
-export type IncludeRelation<TableName extends keyof TSchema> = DBQueryConfig<
+type IncludeRelation<TableName extends keyof TSchema> = DBQueryConfig<
   'one' | 'many',
   boolean,
   TSchema,
   TSchema[TableName]
 >['with'];
 
-export type InferResultType<
+type InferResultType<
   TableName extends keyof TSchema,
   With extends IncludeRelation<TableName> | undefined = undefined
 > = BuildQueryResult<
