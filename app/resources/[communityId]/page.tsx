@@ -4,7 +4,6 @@ import { eq } from "drizzle-orm";
 import ResourcesList from "./components/ResourcesList";
 
 interface Params {
-  children: React.ReactNode;
   params: Promise<{ communityId: string }>;
 }
 
