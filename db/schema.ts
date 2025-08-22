@@ -88,8 +88,6 @@ export const folders = pgTable("folders", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-type Folders = InferResultType<'user', { posts: true }>
-
 export const foldersRelations = relations(folders, ({ one, many }) => ({
   community: one(communities, {
     fields: [folders.communityId],
