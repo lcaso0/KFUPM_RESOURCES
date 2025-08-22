@@ -64,7 +64,7 @@ const Footer = () => {
                 >
                   <a 
                     href={link.href} 
-                     className="text-primary/80 hover:text-gold transition-colors font-cairo text-sm sm:text-base block py-1"
+                     className="text-primary/80 hover:text-secondary dark:hover:text-primary transition-colors font-cairo text-sm sm:text-base block py-1"
                   >
                     {link.text}
                   </a>
@@ -107,8 +107,8 @@ const Footer = () => {
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                     <contact.icon className="w-4 h-4 sm:w-5 sm:h-5 text-foreground flex-shrink-0 mt-0.5" />
-                  <div className="min-w-0 flex-1">
-                   <p className="text-primary/80 font-cairo text-xs sm:text-sm break-words">{contact.title}</p>
+                  <div className="min-w-0 flex-1 group">
+                   <p className="text-primary/80 font-cairo text-xs sm:text-sm break-words group-hover:text-secondary dark:group-hover:text-primary">{contact.title}</p>
                      {contact.subtitle && (
                         <p className="text-primary/80 font-noto-arabic text-xs leading-relaxed">{contact.subtitle}</p>
                      )}
