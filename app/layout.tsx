@@ -41,7 +41,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ClerkProvider>
+        <ClerkProvider appearance={{ theme: 'simple' }} >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
