@@ -11,6 +11,7 @@ import {
   Pi,
   Radiation,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 const getIconComponent = (course: string) => {
@@ -38,7 +39,7 @@ export default function ResourceFolder({ folder }: Props) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <>
+    <Link href={`/resources/${folder.communityId}/${folder.id}`}>
       {/* Desktop: Flip animation */}
       <div className="hidden md:block">
         <motion.div
@@ -109,6 +110,6 @@ export default function ResourceFolder({ folder }: Props) {
           </CardHeader>
         </Card>
       </div>
-    </>
+    </Link>
   );
 }

@@ -2,16 +2,13 @@ import db from "@/db";
 import { communities, folders } from "@/db/schema";
 import { eq, isNull } from "drizzle-orm";
 import ResourcesList from "./components/ResourcesList";
-import { longUUID } from "@/lib/functions";
 
 interface Params {
   params: Promise<{ communityId: string }>;
 }
 
 export default async function CommunityPage({ params }: Params) {
-  const communityId = await params.then((p: { communityId: string }) =>
-    longUUID(p.communityId),
-  );
+  const { communityId } = await params;
   console.log("Community Layout, communityId:", communityId);
 
   const community = await db.query.communities.findFirst({

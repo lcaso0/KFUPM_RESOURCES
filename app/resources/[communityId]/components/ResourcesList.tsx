@@ -4,7 +4,7 @@ import ResourceFolder from "./ResourceFolder";
 import { Folder } from "@/lib/types";
 
 interface Props {
-  folders: Folder[]
+  folders: Folder[];
 }
 
 export default function ResourcesList({ folders }: Props) {
