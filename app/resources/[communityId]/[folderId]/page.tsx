@@ -17,17 +17,10 @@ export default async function FolderPage({ params }: Params) {
     where: eq(folders.id, folderId),
     with: {
       community: true,
-      parentFolder: true,
+      // parentFolder: true,
       children: true,
+      resources: true
     },
-  });
-
-  // Fetch resources in the current folder
-  const folderResources = await db.query.resources.findMany({
-    where: and(
-      eq(resources.communityId, communityId),
-      eq(resources.folderId, folderId),
-    ),
   });
 
   if (!currentFolder) {
@@ -35,6 +28,7 @@ export default async function FolderPage({ params }: Params) {
   }
 
   const subFolders = currentFolder.children;
+  const folderResources = currentFolder.resources;
 
   return (
     <div className="min-h-screen bg-background">

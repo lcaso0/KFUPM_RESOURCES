@@ -1,5 +1,5 @@
 import db from "@/db";
-import { communities, folders } from "@/db/schema";
+import { communities, folders, resources } from "@/db/schema";
 import { eq, isNull } from "drizzle-orm";
 import CommunityList from "./components/CommunityList";
 
@@ -17,6 +17,9 @@ export default async function CommunityPage({ params }: Params) {
       folders: {
         where: isNull(folders.parentId),
       },
+      resources: {
+        where: isNull(resources.folderId), // Only fetch resources not in any folder
+      }
     },
   });
 
@@ -26,5 +29,5 @@ export default async function CommunityPage({ params }: Params) {
 
   console.log("Community:", community);
 
-  return <CommunityList folders={community.folders} />;
+  return <CommunityList folders={community.folders} resources={community.resources ?? []} />;
 }

@@ -70,6 +70,7 @@ export const communitiesRelations = relations(communities, ({ one, many }) => ({
   }),
   usersToGroups: many(usersToCommunities),
   folders: many(folders),
+  resources: many(resources),
 }));
 
 // Folders Table
@@ -102,6 +103,9 @@ export const foldersRelations = relations(folders, ({ one, many }) => ({
   children: many(folders, {
     relationName: "parentFolder"
   }),
+  resources: many(resources, {
+    relationName: "resources"
+  }),
 }));
 
 // Resources Table
@@ -124,6 +128,7 @@ export const resourcesRelations = relations(resources, ({ one }) => ({
   folder: one(folders, {
     fields: [resources.folderId],
     references: [folders.id],
+    relationName: "resources"
   }),
   community: one(communities, {
     fields: [resources.communityId],

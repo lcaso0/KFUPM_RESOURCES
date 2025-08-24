@@ -23,3 +23,4 @@ type InferResultType<
 >;
 
 export type Folder = InferResultType<'folders'>;
+export type Resource = InferResultType<'resources'>;

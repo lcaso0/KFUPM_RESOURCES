@@ -1,10 +1,10 @@
 "use client";
 
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Folder } from "@/lib/types";
-import { motion } from "framer-motion";
 import {
   BicepsFlexed,
+  ChevronRight,
   FlaskConical,
   Folder as FolderIcon,
   Laptop,
@@ -12,104 +12,100 @@ import {
   Radiation,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 const getIconComponent = (course: string) => {
   switch (course.toUpperCase().replace(/[0-9]/g, "")) {
     case "ICS":
-      return <Laptop className="text-blue-500" size={36} />;
+      return <Laptop className="text-blue-500 h-8 w-8" />;
     case "CHEM":
-      return <FlaskConical className="text-green-500" size={36} />;
+      return <FlaskConical className="text-green-500 h-8 w-8" />;
     case "MATH":
-      return <Pi className="text-yellow-500" size={36} />;
+      return <Pi className="text-yellow-500 h-8 w-8" />;
     case "PHYS":
-      return <Radiation className="text-red-500" size={36} />;
+      return <Radiation className="text-red-500 h-8 w-8" />;
     case "PE":
-      return <BicepsFlexed className="text-orange-500" size={36} />;
+      return <BicepsFlexed className="text-orange-500 h-8 w-8" />;
     default:
-      return <FolderIcon className="text-gray-500" size={36} />;
+      return <FolderIcon className="text-primary h-6 w-6" />;
   }
 };
+
+const getBgColor = (course: string) => {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
+    case "ICS":
+      return "bg-blue-500/30";
+    case "CHEM":
+      return "bg-green-500/30";
+    case "MATH":
+      return "bg-yellow-500/30";
+    case "PHYS":
+      return "bg-red-500/30";
+    case "PE":
+      return "bg-orange-500/30";
+    default:
+      return "bg-primary/30";
+  }
+}
+
+const getBorderColor = (course: string) => {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
+    case "ICS":
+      return "border-blue-500/30";
+    case "CHEM":
+      return "border-green-500/30";
+    case "MATH":
+      return "border-yellow-500/30";
+    case "PHYS":
+      return "border-red-500/30";
+    case "PE":
+      return "border-orange-500/30";
+    default:
+      return "border-primary/30";
+  }
+}
+
+const getTextColor = (course: string) => {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
+    case "ICS":
+      return "text-blue-500";
+    case "CHEM":
+      return "text-green-500";
+    case "MATH":
+      return "text-yellow-500";
+    case "PHYS":
+      return "text-red-500";
+    case "PE":
+      return "text-orange-500";
+    default:
+      return "text-primary";
+  }
+}
 
 interface Props {
   folder: Folder;
 }
 
 export default function CommunityCard({ folder }: Props) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
   return (
     <Link href={`/resources/${folder.communityId}/${folder.id}`}>
-      {/* Desktop: Flip animation */}
-      <div className="hidden md:block">
-        <motion.div
-          className="relative w-full h-48 cursor-pointer"
-          style={{ perspective: 1000 }}
-          onHoverStart={() => setIsFlipped(true)}
-          onHoverEnd={() => setIsFlipped(false)}
-          onTapStart={() => setIsFlipped(!isFlipped)}
-        >
-          <motion.div
-            className="relative w-full h-full"
-            style={{ transformStyle: "preserve-3d" }}
-            animate={{ rotateY: isFlipped ? 180 : 0 }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-          >
-            {/* Front of card */}
-            <div
-              className="absolute w-full h-full"
-              style={{ backfaceVisibility: "hidden" }}
-            >
-              <Card className="w-full h-full flex items-center justify-center">
-                <CardHeader className="flex flex-col items-center text-center">
-                  <div className="mb-2">{getIconComponent(folder.name)}</div>
-                  <CardTitle className="text-lg font-semibold">
-                    {folder.name}
-                  </CardTitle>
-                </CardHeader>
-              </Card>
+      <Card className={`h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:${getBorderColor(folder.name)} group`}>
+        <CardHeader className="pb-3">
+          <div className="flex items-center justify-between">
+            <div className={`p-2 rounded-lg ${getBgColor(folder.name)}`}>
+              {getIconComponent(folder.name)}
             </div>
-
-            {/* Back of card */}
-            <div
-              className="absolute w-full h-full"
-              style={{
-                backfaceVisibility: "hidden",
-                transform: "rotateY(180deg)",
-              }}
-            >
-              <Card className="w-full h-full flex items-center justify-center p-4">
-                <CardHeader className="flex flex-col items-center text-center w-full">
-                  <CardTitle className="text-lg font-semibold mb-2 text-primary">
-                    {folder.title}
-                  </CardTitle>
-                  <p className="text-sm text-foreground leading-relaxed">
-                    {folder.description}
-                  </p>
-                </CardHeader>
-              </Card>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Mobile/Tablet: Show title and description below course name */}
-      <div className="md:hidden">
-        <Card className="w-full">
-          <CardHeader className="flex flex-col items-center text-center py-6">
-            <div className="mb-2">{getIconComponent(folder.name)}</div>
-            <CardTitle className="text-lg font-semibold mb-3 text-card-foreground">
-              {folder.name}
-            </CardTitle>
-            <div className="space-y-2">
-              <h3 className="text-base font-semibold text-primary">{folder.title}</h3>
-              <p className="text-sm text-card-foreground leading-relaxed max-w-xs">
-                {folder.description}
-              </p>
-            </div>
-          </CardHeader>
-        </Card>
-      </div>
+            <ChevronRight className={`h-5 w-5 text-muted-foreground group-hover:${getTextColor(folder.name)} transition-colors`} />
+          </div>
+        </CardHeader>
+        <CardContent>
+          <CardTitle className="text-lg font-semibold text-foreground mb-2">
+            {folder.title}
+          </CardTitle>
+          <p className="text-sm text-muted-foreground line-clamp-2">
+            {folder.description}
+          </p>
+        </CardContent>
+      </Card>
     </Link>
   );
 }
