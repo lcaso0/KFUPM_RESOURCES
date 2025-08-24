@@ -1,7 +1,7 @@
 import db from "@/db";
 import { communities, folders } from "@/db/schema";
 import { eq, isNull } from "drizzle-orm";
-import ResourcesList from "./components/ResourcesList";
+import CommunityList from "./components/CommunityList";
 
 interface Params {
   params: Promise<{ communityId: string }>;
@@ -26,5 +26,5 @@ export default async function CommunityPage({ params }: Params) {
 
   console.log("Community:", community);
 
-  return <ResourcesList folders={community.folders} />;
+  return <CommunityList folders={community.folders} />;
 }

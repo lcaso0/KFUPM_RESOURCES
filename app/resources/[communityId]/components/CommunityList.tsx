@@ -1,13 +1,13 @@
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import ResourceFolder from "./ResourceFolder";
+import CommunityCard from "./CommunityCard";
 import { Folder } from "@/lib/types";
 
 interface Props {
   folders: Folder[];
 }
 
-export default function ResourcesList({ folders }: Props) {
+export default function CommunityList({ folders }: Props) {
   return (
     <div className="container mx-auto px-6 py-12">
       <div className="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -46,7 +46,7 @@ export default function ResourcesList({ folders }: Props) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {folders.map((folder) => (
-          <ResourceFolder key={folder.id} folder={folder} />
+          <CommunityCard key={folder.id} folder={folder} />
         ))}
       </div>
     </div>

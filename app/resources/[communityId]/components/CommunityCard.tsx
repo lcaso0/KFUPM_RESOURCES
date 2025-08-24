@@ -35,7 +35,7 @@ interface Props {
   folder: Folder;
 }
 
-export default function ResourceFolder({ folder }: Props) {
+export default function CommunityCard({ folder }: Props) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
