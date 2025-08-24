@@ -16,7 +16,7 @@ import Link from "next/link";
 const getIconComponent = (course: string) => {
   switch (course.toUpperCase().replace(/[0-9]/g, "")) {
     case "ICS":
-      return <Laptop className="text-blue-500 h-8 w-8" />;
+      return <Laptop className="text-cyan-500 h-8 w-8" />;
     case "CHEM":
       return <FlaskConical className="text-green-500 h-8 w-8" />;
     case "MATH":
@@ -30,10 +30,44 @@ const getIconComponent = (course: string) => {
   }
 };
 
+const getHoverBorderColor = (course: string) => {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
+    case "ICS":
+      return "hover:border-cyan-500/30";
+    case "CHEM":
+      return "hover:border-green-500/30";
+    case "MATH":
+      return "hover:border-yellow-500/30";
+    case "PHYS":
+      return "hover:border-red-500/30";
+    case "PE":
+      return "hover:border-orange-500/30";
+    default:
+      return "hover:border-primary/30";
+  }
+};
+
+const getHoverTextColor = (course: string) => {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
+    case "ICS":
+      return "group-hover:text-cyan-500";
+    case "CHEM":
+      return "group-hover:text-green-500";
+    case "MATH":
+      return "group-hover:text-yellow-500";
+    case "PHYS":
+      return "group-hover:text-red-500";
+    case "PE":
+      return "group-hover:text-orange-500";
+    default:
+      return "group-hover:text-primary";
+  }
+};
+
 const getBgColor = (course: string) => {
   switch (course.toUpperCase().replace(/[0-9]/g, "")) {
     case "ICS":
-      return "bg-blue-500/30";
+      return "bg-cyan-500/30";
     case "CHEM":
       return "bg-green-500/30";
     case "MATH":
@@ -45,41 +79,7 @@ const getBgColor = (course: string) => {
     default:
       return "bg-primary/30";
   }
-}
-
-const getBorderColor = (course: string) => {
-  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
-    case "ICS":
-      return "border-blue-500/30";
-    case "CHEM":
-      return "border-green-500/30";
-    case "MATH":
-      return "border-yellow-500/30";
-    case "PHYS":
-      return "border-red-500/30";
-    case "PE":
-      return "border-orange-500/30";
-    default:
-      return "border-primary/30";
-  }
-}
-
-const getTextColor = (course: string) => {
-  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
-    case "ICS":
-      return "text-blue-500";
-    case "CHEM":
-      return "text-green-500";
-    case "MATH":
-      return "text-yellow-500";
-    case "PHYS":
-      return "text-red-500";
-    case "PE":
-      return "text-orange-500";
-    default:
-      return "text-primary";
-  }
-}
+};
 
 interface Props {
   folder: Folder;
@@ -88,13 +88,17 @@ interface Props {
 export default function CommunityCard({ folder }: Props) {
   return (
     <Link href={`/resources/${folder.communityId}/${folder.id}`}>
-      <Card className={`h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:${getBorderColor(folder.name)} group`}>
+      <Card
+        className={`h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border ${getHoverBorderColor(folder.name)} group hover:cursor-pointer`}
+      >
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div className={`p-2 rounded-lg ${getBgColor(folder.name)}`}>
               {getIconComponent(folder.name)}
             </div>
-            <ChevronRight className={`h-5 w-5 text-muted-foreground group-hover:${getTextColor(folder.name)} transition-colors`} />
+            <ChevronRight
+              className={`h-5 w-5 text-muted-foreground ${getHoverTextColor(folder.name)} transition-colors`}
+            />
           </div>
         </CardHeader>
         <CardContent>
