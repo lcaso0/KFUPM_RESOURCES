@@ -1,5 +1,5 @@
 // scripts/seed.ts
-import 'dotenv/config';
+import "dotenv/config";
 import {
   users,
   communities,
@@ -8,14 +8,17 @@ import {
   resources,
 } from "./schema";
 import { eq } from "drizzle-orm";
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle } from "drizzle-orm/postgres-js";
 
 const db = drizzle(process.env.DATABASE_URL!);
 
 async function main() {
   // 1. Find existing user by email
   const userEmail = "s202458760@kfupm.edu.sa"; // change this to an existing email
-  const [user] = await db.select().from(users).where(eq(users.email, userEmail));
+  const [user] = await db
+    .select()
+    .from(users)
+    .where(eq(users.email, userEmail));
 
   if (!user) {
     throw new Error(`No user found with email: ${userEmail}`);
@@ -23,25 +26,28 @@ async function main() {
   console.log("Found user:", user.fullName);
 
   // 2. Create a new community
-  const [community] = await db
-    .insert(communities)
-    .values({
-      name: "Public Community",
-      code: "PUB", // make random in prod
-      description: "Default public community",
-      authorId: user.id,
-    })
-    .returning();
+  // const [community] = await db
+  //   .insert(communities)
+  //   .values({
+  //     name: "Public Community",
+  //     code: "PUB", // make random in prod
+  //     description: "Default public community",
+  //     authorId: user.id,
+  //   })
+  //   .returning();
 
-  console.log("Created community:", community.name);
-  // const [community] = await db.select().from(communities).where(eq(communities.code, "PUB"));
+  // console.log("Created community:", community.name);
+  const [community] = await db
+    .select()
+    .from(communities)
+    .where(eq(communities.code, "PUB"));
 
   // 3. Join the user into the community as admin
-  await db.insert(usersToCommunities).values({
-    userId: user.id,
-    communityId: community.id,
-    role: "admin",
-  });
+  // await db.insert(usersToCommunities).values({
+  //   userId: user.id,
+  //   communityId: community.id,
+  //   role: "admin",
+  // });
 
   console.log("User joined community as admin");
 
@@ -49,8 +55,8 @@ async function main() {
   const [parentFolder] = await db
     .insert(folders)
     .values({
-      title: "First Programming Course",
-      name: "ICS104",
+      title: "First Year Physics Course",
+      name: "PHYS101",
       description: "All lecture notes for the semester",
       communityId: community.id,
     })
@@ -59,15 +65,33 @@ async function main() {
   const [childFolder] = await db
     .insert(folders)
     .values({
-      name: "Old Exams",
-      title: "Exams for ICS104",
-      description: "Collection of old exams",
+      name: "Lecture Notes",
+      title: "Lecture Notes for PHYS101",
+      description: "Notes from all lectures",
       communityId: community.id,
       parentId: parentFolder.id,
     })
     .returning();
 
-  console.log("Created folders:", parentFolder.name, "->", childFolder.name);
+  const [subChildFolder] = await db
+    .insert(folders)
+    .values({
+      name: "Chapter 1",
+      title: "Lecture Notes for PHYS101 Chapter 1",
+      description: "Notes from all lectures in Chapter 1",
+      communityId: community.id,
+      parentId: childFolder.id,
+    })
+    .returning();
+
+  console.log(
+    "Created folders:",
+    parentFolder.name,
+    "->",
+    childFolder.name,
+    "->",
+    subChildFolder.name,
+  );
 
   // 5. Add resources
   await db.insert(resources).values([
@@ -78,11 +102,18 @@ async function main() {
       communityId: community.id,
     },
     {
-      title: "Week 1 Notes",
-      description: "Intro to the course",
-      content: "Content of week 1 notes...",
+      title: "week 1 notes",
+      description: "intro to the course",
+      content: "content of week 1 notes...",
       communityId: community.id,
       folderId: childFolder.id,
+    },
+    {
+      title: "Chapter 1 first note",
+      description: "First chapter lecture note",
+      content: "content of the first chapter note",
+      communityId: community.id,
+      folderId: subChildFolder.id,
     },
   ]);
 

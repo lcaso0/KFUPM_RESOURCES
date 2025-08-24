@@ -1,10 +1,9 @@
-import db from "@/db";
-import { folders, communities, resources } from "@/db/schema";
-import { eq, and, isNull } from "drizzle-orm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Folder as FolderIcon, FileText, ChevronRight } from "lucide-react";
+import db from "@/db";
+import { folders, resources } from "@/db/schema";
+import { and, eq } from "drizzle-orm";
+import { ChevronRight, FileText, Folder as FolderIcon } from "lucide-react";
 import Link from "next/link";
-import ResourcesBreadCrumbs from "../components/ResourcesBreadCrumbs";
 
 interface Params {
   params: Promise<{ communityId: string; folderId: string }>;
@@ -22,15 +21,14 @@ export default async function FolderPage({ params }: Params) {
       children: true,
     },
   });
-  
+
   // Fetch resources in the current folder
   const folderResources = await db.query.resources.findMany({
     where: and(
       eq(resources.communityId, communityId),
       eq(resources.folderId, folderId),
-    )
+    ),
   });
-
 
   if (!currentFolder) {
     return <div className="container mx-auto px-6 py-12">Folder not found</div>;
@@ -59,9 +57,9 @@ export default async function FolderPage({ params }: Params) {
         </div>
 
         {/* Sub-folders Section */}
-        {subFolders.length > 0 && (
-          <div className="mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {subFolders.length > 0 && (
+            <>
               {subFolders.map((folder) => (
                 <Link
                   key={folder.id}
@@ -88,47 +86,38 @@ export default async function FolderPage({ params }: Params) {
                   </Card>
                 </Link>
               ))}
-            </div>
-          </div>
-        )}
+            </>
+          )}
 
-        {/* Resources Section */}
-        {folderResources.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-semibold text-foreground mb-6">
-              Resources
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Resources Section */}
+          {folderResources.length > 0 && (
+            <>
               {folderResources.map((resource) => (
-                <Card key={resource.id} className="hover:shadow-md transition-shadow">
+                <Card
+                  className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-secondary/50 dark:hover:border-blue-400/50 group"
+                  key={resource.id}
+                >
                   <CardHeader className="pb-3">
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 bg-secondary/50 rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div className="p-2 bg-secondary/50 dark:bg-blue-400/50 rounded-lg">
                         <FileText className="h-5 w-5 text-secondary-foreground" />
                       </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-lg font-semibold text-foreground">
-                          {resource.title}
-                        </CardTitle>
-                        {resource.description && (
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {resource.description}
-                          </p>
-                        )}
-                      </div>
+                      <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-secondary dark:group-hover:text-blue-400/50 transition-colors" />
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <span>Click to view</span>
-                      <ChevronRight className="h-4 w-4" />
-                    </div>
+                    <CardTitle className="text-lg font-semibold text-foreground mb-2">
+                      {resource.title}
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {resource.description}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-        )}
+            </>
+          )}
+        </div>
 
         {/* Empty State */}
         {subFolders.length === 0 && folderResources.length === 0 && (
