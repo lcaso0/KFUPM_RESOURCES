@@ -1,9 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import db from "@/db";
-import { folders, resources } from "@/db/schema";
-import { and, eq } from "drizzle-orm";
+import { folders } from "@/db/schema";
+import { getBreadcrumb } from "@/lib/functions";
+import { eq } from "drizzle-orm";
 import { ChevronRight, FileText, Folder as FolderIcon } from "lucide-react";
 import Link from "next/link";
+import ResourcesBreadCrumbs from "../components/ResourcesBreadCrumbs";
 
 interface Params {
   params: Promise<{ communityId: string; folderId: string }>;
@@ -19,7 +21,7 @@ export default async function FolderPage({ params }: Params) {
       community: true,
       // parentFolder: true,
       children: true,
-      resources: true
+      resources: true,
     },
   });
 
@@ -30,11 +32,19 @@ export default async function FolderPage({ params }: Params) {
   const subFolders = currentFolder.children;
   const folderResources = currentFolder.resources;
 
+  // Breadcrumbs
+  const breadcrumbs = await getBreadcrumb(currentFolder.id)
+  console.log("Breadcrumbs:", breadcrumbs);
+
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       <div className="container mx-auto px-6 py-8">
+        {/* Breadcrumbs */}
+        <ResourcesBreadCrumbs />
+
         {/* Header Section */}
-        <div className="mb-8">
+        <div className="my-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">
             {currentFolder.title}
           </h1>

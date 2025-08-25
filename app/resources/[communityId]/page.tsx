@@ -9,7 +9,7 @@ interface Params {
 
 export default async function CommunityPage({ params }: Params) {
   const { communityId } = await params;
-  console.log("Community Layout, communityId:", communityId);
+  // console.log("Community Layout, communityId:", communityId);
 
   const community = await db.query.communities.findFirst({
     where: eq(communities.id, communityId),
@@ -27,7 +27,7 @@ export default async function CommunityPage({ params }: Params) {
     return <div>Community not found</div>;
   }
 
-  console.log("Community:", community);
+  // console.log("Community:", community);
 
   return <CommunityList folders={community.folders} resources={community.resources ?? []} />;
 }
