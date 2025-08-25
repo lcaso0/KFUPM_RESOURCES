@@ -12,7 +12,7 @@ export function longUUID(uuid: string): string {
   return translator.toUUID(uuid);
 }
 
-export async function getBreadcrumb(folderId: string) {
+export async function getBreadcrumb(folderId: string): Promise<{ id: string; name: string }[]> {
   const rawFolders = await db.execute(sql`
     WITH RECURSIVE folder_path AS (
       SELECT id, folder_name, parent_id

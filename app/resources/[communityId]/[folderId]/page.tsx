@@ -34,14 +34,12 @@ export default async function FolderPage({ params }: Params) {
 
   // Breadcrumbs
   const breadcrumbs = await getBreadcrumb(currentFolder.id)
-  console.log("Breadcrumbs:", breadcrumbs);
-
 
   return (
     <div className="bg-background">
       <div className="container mx-auto px-6 py-8">
         {/* Breadcrumbs */}
-        <ResourcesBreadCrumbs />
+        <ResourcesBreadCrumbs data={breadcrumbs} communityName={currentFolder.community.name} communityId={currentFolder.community.id} />
 
         {/* Header Section */}
         <div className="my-8">

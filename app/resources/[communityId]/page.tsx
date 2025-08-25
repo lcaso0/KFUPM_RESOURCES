@@ -19,7 +19,7 @@ export default async function CommunityPage({ params }: Params) {
       },
       resources: {
         where: isNull(resources.folderId), // Only fetch resources not in any folder
-      }
+      },
     },
   });
 
@@ -29,5 +29,10 @@ export default async function CommunityPage({ params }: Params) {
 
   // console.log("Community:", community);
 
-  return <CommunityList folders={community.folders} resources={community.resources ?? []} />;
+  return (
+    <CommunityList
+      folders={community.folders}
+      resources={community.resources ?? []}
+    />
+  );
 }
