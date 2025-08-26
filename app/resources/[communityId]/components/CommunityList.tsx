@@ -73,7 +73,7 @@ export default function CommunityList({ folders, resources }: Props) {
           <>
             {resources.map((resource) => (
               <Card
-                className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-secondary/50 dark:hover:border-blue-400/50 group"
+                className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-secondary/50 dark:hover:border-blue-400/50 group hover:cursor-pointer"
                 key={resource.id}
               >
                 <CardHeader className="pb-3">
