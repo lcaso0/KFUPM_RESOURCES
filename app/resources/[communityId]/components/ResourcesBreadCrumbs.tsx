@@ -43,39 +43,50 @@ export default function ResourcesBreadCrumbs() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 font-bold">
-              {communityName} <ChevronDown className="size-3.5" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>Communities</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuRadioGroup value={communityId}>
-                {joinedCommunities.length === 0 && (
-                  <DropdownMenuRadioItem value="a931b4c1-60ae-4ae6-92ee-d2469c036470">
-                    <Link
-                      href={`/resources/"a931b4c1-60ae-4ae6-92ee-d2469c036470"`}
-                    >
-                      Public
+          <BreadcrumbLink asChild>
+            <Link href={`/resources/${communityId}`}>
+              <DropdownMenu>
+                <div className="flex items-center gap-1">
+                  {communityName}
+                  <DropdownMenuTrigger className="flex items-center gap-1 font-bold">
+                    <ChevronDown className="size-5" />
+                  </DropdownMenuTrigger>
+                </div>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>Communities</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup value={communityId}>
+                    {joinedCommunities.length === 0 && (
+                      <DropdownMenuRadioItem value="a931b4c1-60ae-4ae6-92ee-d2469c036470">
+                        <Link
+                          href={`/resources/"a931b4c1-60ae-4ae6-92ee-d2469c036470"`}
+                        >
+                          Public
+                        </Link>
+                      </DropdownMenuRadioItem>
+                    )}
+                    {joinedCommunities.length > 0 &&
+                      joinedCommunities.map((c) => (
+                        <DropdownMenuRadioItem key={c.id} value={c.id}>
+                          <Link href={`/resources/${c.id}`}>{c.name}</Link>
+                        </DropdownMenuRadioItem>
+                      ))}
+                  </DropdownMenuRadioGroup>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full mt-2"
+                    asChild
+                  >
+                    <Link href="/resources/join">
+                      Join Community <DoorOpen className="btn-icon" />
                     </Link>
-                  </DropdownMenuRadioItem>
-                )}
-                {joinedCommunities.length > 0 &&
-                  joinedCommunities.map((c) => (
-                    <DropdownMenuRadioItem key={c.id} value={c.id}>
-                      <Link href={`/resources/${c.id}`}>{c.name}</Link>
-                    </DropdownMenuRadioItem>
-                  ))}
-              </DropdownMenuRadioGroup>
-              <Button variant="ghost" size="sm" className="w-full mt-2" asChild>
-                <Link href="/resources/join">
-                  Join Community <DoorOpen className="btn-icon" />
-                </Link>
-              </Button>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                  </Button>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
-
         {breadcrumbs.map((folder) => (
           <Fragment key={folder.id}>
             <BreadcrumbSeparator>
