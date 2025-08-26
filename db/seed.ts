@@ -14,7 +14,7 @@ const db = drizzle(process.env.DATABASE_URL!);
 
 async function main() {
   // 1. Find existing user by email
-  const userEmail = "s202458760@kfupm.edu.sa"; // change this to an existing email
+  const userEmail = "s202458760@kfupm.edu.sa"; // change if needed
   const [user] = await db
     .select()
     .from(users)
@@ -25,29 +25,25 @@ async function main() {
   }
   console.log("Found user:", user.fullName);
 
-  // 2. Create a new community
-  // const [community] = await db
-  //   .insert(communities)
-  //   .values({
-  //     name: "Public Community",
-  //     code: "PUB", // make random in prod
-  //     description: "Default public community",
-  //     authorId: user.id,
-  //   })
-  //   .returning();
-
-  // console.log("Created community:", community.name);
+  // 2. Create a new community named "Qatif"
   const [community] = await db
-    .select()
-    .from(communities)
-    .where(eq(communities.code, "PUB"));
+    .insert(communities)
+    .values({
+      name: "Qatif",
+      code: "QATIF123", // make random or unique in prod
+      description: "Community for Qatif students",
+      authorId: user.clerkId,
+    })
+    .returning();
+
+  console.log("Created community:", community.name);
 
   // 3. Join the user into the community as admin
-  // await db.insert(usersToCommunities).values({
-  //   userId: user.id,
-  //   communityId: community.id,
-  //   role: "admin",
-  // });
+  await db.insert(usersToCommunities).values({
+    userId: user.clerkId,
+    communityId: community.id,
+    role: "admin",
+  });
 
   console.log("User joined community as admin");
 
@@ -55,9 +51,9 @@ async function main() {
   const [parentFolder] = await db
     .insert(folders)
     .values({
-      title: "First Year Physics Course",
-      name: "PHYS101",
-      description: "All lecture notes for the semester",
+      title: "Engineering 101",
+      name: "ENG101",
+      description: "All lecture notes for Engineering 101",
       communityId: community.id,
     })
     .returning();
@@ -66,7 +62,7 @@ async function main() {
     .insert(folders)
     .values({
       name: "Lecture Notes",
-      title: "Lecture Notes for PHYS101",
+      title: "Lecture Notes for ENG101",
       description: "Notes from all lectures",
       communityId: community.id,
       parentId: parentFolder.id,
@@ -77,8 +73,8 @@ async function main() {
     .insert(folders)
     .values({
       name: "Chapter 1",
-      title: "Lecture Notes for PHYS101 Chapter 1",
-      description: "Notes from all lectures in Chapter 1",
+      title: "Lecture Notes for ENG101 Chapter 1",
+      description: "Notes from Chapter 1",
       communityId: community.id,
       parentId: childFolder.id,
     })
@@ -98,26 +94,26 @@ async function main() {
     {
       title: "Syllabus",
       description: "Course syllabus document",
-      content: "This is the syllabus text...",
+      content: "This is the syllabus text for ENG101...",
       communityId: community.id,
     },
     {
-      title: "week 1 notes",
-      description: "intro to the course",
-      content: "content of week 1 notes...",
+      title: "Week 1 Notes",
+      description: "Introduction to engineering",
+      content: "Content of week 1 notes...",
       communityId: community.id,
       folderId: childFolder.id,
     },
     {
-      title: "Chapter 1 first note",
+      title: "Chapter 1 First Note",
       description: "First chapter lecture note",
-      content: "content of the first chapter note",
+      content: "Content of the first chapter note...",
       communityId: community.id,
       folderId: subChildFolder.id,
     },
   ]);
 
-  console.log("Seed data inserted successfully!");
+  console.log("Seed data for 'Qatif' inserted successfully!");
 }
 
 main().catch((err) => {
