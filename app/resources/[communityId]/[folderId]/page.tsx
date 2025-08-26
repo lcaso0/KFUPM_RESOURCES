@@ -5,7 +5,7 @@ import { getBreadcrumb } from "@/lib/functions";
 import { eq } from "drizzle-orm";
 import { ChevronRight, FileText, Folder as FolderIcon } from "lucide-react";
 import Link from "next/link";
-import ResourcesBreadCrumbs from "../components/ResourcesBreadCrumbs";
+import BreadcrumbUpdater from "../components/BreadcrumbUpdater";
 
 interface Params {
   params: Promise<{ communityId: string; folderId: string }>;
@@ -37,10 +37,12 @@ export default async function FolderPage({ params }: Params) {
 
   return (
     <div className="bg-background">
+      <BreadcrumbUpdater 
+        breadcrumbs={breadcrumbs} 
+        communityName={currentFolder.community.name} 
+        communityId={currentFolder.community.id} 
+      />
       <div className="container mx-auto px-6 py-8">
-        {/* Breadcrumbs */}
-        <ResourcesBreadCrumbs data={breadcrumbs} communityName={currentFolder.community.name} communityId={currentFolder.community.id} />
-
         {/* Header Section */}
         <div className="my-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">

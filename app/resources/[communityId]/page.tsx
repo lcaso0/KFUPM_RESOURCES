@@ -2,6 +2,7 @@ import db from "@/db";
 import { communities, folders, resources } from "@/db/schema";
 import { eq, isNull } from "drizzle-orm";
 import CommunityList from "./components/CommunityList";
+import BreadcrumbUpdater from "./components/BreadcrumbUpdater";
 
 interface Params {
   params: Promise<{ communityId: string }>;
@@ -9,7 +10,6 @@ interface Params {
 
 export default async function CommunityPage({ params }: Params) {
   const { communityId } = await params;
-  // console.log("Community Layout, communityId:", communityId);
 
   const community = await db.query.communities.findFirst({
     where: eq(communities.id, communityId),
@@ -27,12 +27,17 @@ export default async function CommunityPage({ params }: Params) {
     return <div>Community not found</div>;
   }
 
-  // console.log("Community:", community);
-
   return (
-    <CommunityList
-      folders={community.folders}
-      resources={community.resources ?? []}
-    />
+    <>
+      <BreadcrumbUpdater 
+        breadcrumbs={[]} 
+        communityName={community.name} 
+        communityId={community.id} 
+      />
+      <CommunityList
+        folders={community.folders}
+        resources={community.resources ?? []}
+      />
+    </>
   );
 }
