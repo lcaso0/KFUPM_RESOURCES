@@ -40,10 +40,16 @@ export const usersToCommunities = pgTable(
   {
     userId: uuid("user_id")
       .notNull()
-      .references(() => users.id),
+      .references(() => users.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
     communityId: uuid("community_id")
       .notNull()
-      .references(() => communities.id),
+      .references(() => communities.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
     role: varchar("role", { length: 10 }).notNull().default("member"), // 'admin', 'member'
   },
   (t) => [primaryKey({ columns: [t.userId, t.communityId] })],
@@ -81,10 +87,18 @@ export const folders = pgTable("folders", {
   description: text("description"),
   communityId: uuid("community_id")
     .notNull()
-    .references(() => communities.id, { onDelete: "cascade" }),
+    .references(() => communities.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
   parentId: uuid("parent_id").references((): any => folders.id, {
     onDelete: "cascade",
+    onUpdate: "cascade",
   }),
+  authorId: uuid("author_id").references(() => users.id, {
+    onDelete: "cascade",
+    onUpdate: "cascade",
+  }).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -93,18 +107,23 @@ export const foldersRelations = relations(folders, ({ one, many }) => ({
   community: one(communities, {
     fields: [folders.communityId],
     references: [communities.id],
-    relationName: "community"
+    relationName: "community",
+  }),
+  author: one(users, {
+    fields: [folders.authorId],
+    references: [users.id],
+    relationName: "folderauthor",
   }),
   parentFolder: one(folders, {
     fields: [folders.parentId],
     references: [folders.id],
-    relationName: "parentFolder"
+    relationName: "parentFolder",
   }),
   children: many(folders, {
-    relationName: "parentFolder"
+    relationName: "parentFolder",
   }),
   resources: many(resources, {
-    relationName: "resources"
+    relationName: "resources",
   }),
 }));
 
@@ -116,10 +135,18 @@ export const resources = pgTable("resources", {
   content: text("content").notNull(),
   communityId: uuid("community_id")
     .notNull()
-    .references(() => communities.id, { onDelete: "cascade" }),
+    .references(() => communities.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
   folderId: uuid("folder_id").references((): any => folders.id, {
     onDelete: "cascade",
+    onUpdate: "cascade",
   }),
+  authorId: uuid("author_id").references(() => users.id, {
+    onDelete: "cascade",
+    onUpdate: "cascade",
+  }).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -128,7 +155,12 @@ export const resourcesRelations = relations(resources, ({ one }) => ({
   folder: one(folders, {
     fields: [resources.folderId],
     references: [folders.id],
-    relationName: "resources"
+    relationName: "resources",
+  }),
+  author: one(users, {
+    fields: [resources.authorId],
+    references: [users.id],
+    relationName: "resourceauthor",
   }),
   community: one(communities, {
     fields: [resources.communityId],
