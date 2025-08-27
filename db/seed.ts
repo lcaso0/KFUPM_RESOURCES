@@ -55,6 +55,7 @@ async function main() {
       name: "ENG101",
       description: "All lecture notes for Engineering 101",
       communityId: community.id,
+      authorId: user.id
     })
     .returning();
 
@@ -77,6 +78,7 @@ async function main() {
       description: "Notes from Chapter 1",
       communityId: community.id,
       parentId: childFolder.id,
+      authorId: user.id
     })
     .returning();
 
@@ -96,6 +98,7 @@ async function main() {
       description: "Course syllabus document",
       content: "This is the syllabus text for ENG101...",
       communityId: community.id,
+      authorId: user.id
     },
     {
       title: "Week 1 Notes",
@@ -103,6 +106,7 @@ async function main() {
       content: "Content of week 1 notes...",
       communityId: community.id,
       folderId: childFolder.id,
+      authorId: user.id
     },
     {
       title: "Chapter 1 First Note",
@@ -110,6 +114,7 @@ async function main() {
       content: "Content of the first chapter note...",
       communityId: community.id,
       folderId: subChildFolder.id,
+      authorId: user.id
     },
   ]);
 
