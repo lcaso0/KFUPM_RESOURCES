@@ -67,6 +67,7 @@ async function main() {
       description: "Notes from all lectures",
       communityId: community.id,
       parentId: parentFolder.id,
+      authorId: user.id
     })
     .returning();
 
