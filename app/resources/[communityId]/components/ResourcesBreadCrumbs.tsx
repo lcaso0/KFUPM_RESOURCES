@@ -24,6 +24,7 @@ import { useBreadcrumb } from "../context/BreadcrumbContext";
 import { useAction } from "next-safe-action/hooks";
 import { getJoinedCommunities } from "@/lib/actions";
 import { useUser } from "@clerk/nextjs";
+import { PUBLIC_COMMUNITY_ID } from "@/lib/shared-variables";
 
 export default function ResourcesBreadCrumbs() {
   const { breadcrumbs, communityName, communityId } = useBreadcrumb();
@@ -57,9 +58,9 @@ export default function ResourcesBreadCrumbs() {
                   <DropdownMenuSeparator />
                   <DropdownMenuRadioGroup value={communityId}>
                     {joinedCommunities.length === 0 && (
-                      <DropdownMenuRadioItem value="a931b4c1-60ae-4ae6-92ee-d2469c036470">
+                      <DropdownMenuRadioItem value={PUBLIC_COMMUNITY_ID}>
                         <Link
-                          href={`/resources/"a931b4c1-60ae-4ae6-92ee-d2469c036470"`}
+                          href={`/resources/${PUBLIC_COMMUNITY_ID}`}
                         >
                           Public
                         </Link>
