@@ -58,19 +58,19 @@ export default function ResourcesBreadCrumbs() {
                   <DropdownMenuSeparator />
                   <DropdownMenuRadioGroup value={communityId}>
                     {joinedCommunities.length === 0 && (
-                      <DropdownMenuRadioItem value={PUBLIC_COMMUNITY_ID}>
-                        <Link
-                          href={`/resources/${PUBLIC_COMMUNITY_ID}`}
-                        >
+                      <Link href={`/resources/${PUBLIC_COMMUNITY_ID}`}>
+                        <DropdownMenuRadioItem value={PUBLIC_COMMUNITY_ID}>
                           Public
-                        </Link>
-                      </DropdownMenuRadioItem>
+                        </DropdownMenuRadioItem>
+                      </Link>
                     )}
                     {joinedCommunities.length > 0 &&
                       joinedCommunities.map((c) => (
-                        <DropdownMenuRadioItem key={c.id} value={c.id}>
-                          <Link href={`/resources/${c.id}`}>{c.name}</Link>
-                        </DropdownMenuRadioItem>
+                        <Link href={`/resources/${c.id}`}>
+                          <DropdownMenuRadioItem key={c.id} value={c.id}>
+                            {c.name}
+                          </DropdownMenuRadioItem>
+                        </Link>
                       ))}
                   </DropdownMenuRadioGroup>
                   <Button
