@@ -64,8 +64,8 @@ export default function ResourcesBreadCrumbs() {
                     </Link>
                     {joinedCommunities.length > 0 &&
                       joinedCommunities.map((c) => (
-                        <Link href={`/resources/${c.id}`}>
-                          <DropdownMenuRadioItem key={c.id} value={c.id}>
+                        <Link key={c.id} href={`/resources/${c.id}`}>
+                          <DropdownMenuRadioItem value={c.id}>
                             {c.name}
                           </DropdownMenuRadioItem>
                         </Link>
