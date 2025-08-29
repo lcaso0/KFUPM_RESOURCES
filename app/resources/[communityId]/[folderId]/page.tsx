@@ -33,14 +33,14 @@ export default async function FolderPage({ params }: Params) {
   const folderResources = currentFolder.resources;
 
   // Breadcrumbs
-  const breadcrumbs = await getBreadcrumb(currentFolder.id)
+  const breadcrumbs = await getBreadcrumb(currentFolder.id);
 
   return (
     <div className="bg-background">
-      <BreadcrumbUpdater 
-        breadcrumbs={breadcrumbs} 
-        communityName={currentFolder.community.name} 
-        communityId={currentFolder.community.id} 
+      <BreadcrumbUpdater
+        breadcrumbs={breadcrumbs}
+        communityName={currentFolder.community.name}
+        communityId={currentFolder.community.id}
       />
       <div className="container mx-auto px-6 py-8">
         {/* Header Section */}
@@ -70,11 +70,11 @@ export default async function FolderPage({ params }: Params) {
                   href={`/resources/${communityId}/${folder.id}`}
                   className="group"
                 >
-                  <Card className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-primary/50 hover:cursor-pointer">
+                  <Card className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-primary/50 hover:cursor-pointer flex flex-col justify-between">
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between">
                         <div className="p-2 bg-primary/10 rounded-lg">
-                          <FolderIcon className="h-6 w-6 text-primary" />
+                          <FolderIcon className="h-8 w-8 text-primary" />
                         </div>
                         <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
                       </div>
@@ -104,7 +104,7 @@ export default async function FolderPage({ params }: Params) {
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                       <div className="p-2 bg-secondary/50 dark:bg-blue-400/50 rounded-lg">
-                        <FileText className="h-5 w-5 text-secondary-foreground" />
+                        <FileText className="h-8 w-8 text-secondary-foreground" />
                       </div>
                       <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-secondary dark:group-hover:text-blue-400/50 transition-colors" />
                     </div>

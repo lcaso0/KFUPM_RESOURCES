@@ -62,6 +62,23 @@ const getHoverTextColor = (course: string) => {
   }
 };
 
+const getTextColor = (course: string) => {
+  switch (course.toUpperCase().replace(/[0-9]/g, "")) {
+    case "ICS":
+      return "text-cyan-500";
+    case "CHEM":
+      return "text-green-500";
+    case "MATH":
+      return "text-yellow-500";
+    case "PHYS":
+      return "text-red-500";
+    case "PE":
+      return "text-orange-500";
+    default:
+      return "text-primary";
+  }
+};
+
 const getBgColor = (course: string) => {
   switch (course.toUpperCase().replace(/[0-9]/g, "")) {
     case "ICS":
@@ -87,9 +104,9 @@ export default function CommunityCard({ folder }: Props) {
   return (
     <Link href={`/resources/${folder.communityId}/${folder.id}`}>
       <Card
-        className={`h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border ${getHoverBorderColor(folder.name)} group hover:cursor-pointer`}
+        className={`h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border ${getHoverBorderColor(folder.name)} group hover:cursor-pointer flex flex-col justify-between`}
       >
-        <CardHeader className="pb-3">
+        <CardHeader>
           <div className="flex items-center justify-between">
             <div className={`p-2 rounded-lg ${getBgColor(folder.name)}`}>
               {getIconComponent(folder.name)}
@@ -100,6 +117,11 @@ export default function CommunityCard({ folder }: Props) {
           </div>
         </CardHeader>
         <CardContent>
+          <CardTitle
+            className={`text-lg font-semibold text-foreground mb-2 ${getTextColor(folder.name)}`}
+          >
+            {folder.name}
+          </CardTitle>
           <CardTitle className="text-lg font-semibold text-foreground mb-2">
             {folder.title}
           </CardTitle>

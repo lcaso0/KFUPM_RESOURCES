@@ -73,13 +73,13 @@ export default function CommunityList({ folders, resources }: Props) {
           <>
             {resources.map((resource) => (
               <Card
-                className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-secondary/50 dark:hover:border-blue-400/50 group hover:cursor-pointer"
+                className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-secondary/50 dark:hover:border-blue-400/50 group hover:cursor-pointer flex flex-col justify-between"
                 key={resource.id}
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <div className="p-2 bg-secondary/50 dark:bg-blue-400/50 rounded-lg">
-                      <FileText className="h-5 w-5 text-secondary-foreground" />
+                      <FileText className="h-8 w-8 text-secondary-foreground" />
                     </div>
                     <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-secondary dark:group-hover:text-blue-400/50 transition-colors" />
                   </div>
