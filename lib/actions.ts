@@ -4,7 +4,7 @@ import { z } from "zod";
 import { actionClient } from "./safe-action";
 import db from "@/db";
 import { communities, usersToCommunities, users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 const getJoinedCommunitiesSchema = z.object({
   userId: z.string().min(1, "User ID is required"),
@@ -34,5 +34,37 @@ export const getJoinedCommunities = actionClient
       return joinedCommunities;
     } catch (error) {
       throw new Error("Failed to fetch joined communities");
+    }
+  });
+
+export const getBreadCrumb = actionClient
+  .inputSchema(
+    z.object({
+      folderId: z.string().min(1, "Folder ID is required"),
+    }),
+  )
+  .action(async ({ parsedInput }) => {
+    try {
+      const rawFolders = await db.execute(sql`
+      WITH RECURSIVE folder_path AS (
+        SELECT id, folder_name, parent_id
+        FROM folders
+        WHERE id = ${parsedInput.folderId}
+
+        UNION ALL
+
+        SELECT f.id, f.folder_name, f.parent_id
+        FROM folders f
+        INNER JOIN folder_path fp ON f.id = fp.parent_id
+      )
+      SELECT * FROM folder_path;
+    `);
+
+      return rawFolders.reverse().map((f: any) => ({
+        id: f.id,
+        name: f.folder_name,
+      }));
+    } catch (error) {
+      throw new Error("Failed to fetch breadcrumb");
     }
   });

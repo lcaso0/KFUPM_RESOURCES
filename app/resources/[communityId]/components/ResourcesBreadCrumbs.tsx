@@ -22,28 +22,48 @@ import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { useBreadcrumb } from "../context/BreadcrumbContext";
 import { useAction } from "next-safe-action/hooks";
-import { getJoinedCommunities } from "@/lib/actions";
+import { getBreadCrumb, getJoinedCommunities } from "@/lib/actions";
 import { useUser } from "@clerk/nextjs";
 import { PUBLIC_COMMUNITY_ID } from "@/lib/shared-variables";
 
 export default function ResourcesBreadCrumbs() {
-  const { breadcrumbs, communityName, communityId } = useBreadcrumb();
+  const {
+    breadcrumbs,
+    communityName,
+    communityId,
+    folderId,
+    truncateBreadcrumb,
+    setBreadcrumbs,
+  } = useBreadcrumb();
   const { executeAsync } = useAction(getJoinedCommunities);
+  const breadcrumbAction = useAction(getBreadCrumb);
   const { user, isLoaded } = useUser();
   const [joinedCommunities, setJoinedCommunities] = useState<any[]>([]);
 
   useEffect(() => {
+    if (folderId) {
+      breadcrumbAction.executeAsync({ folderId }).then((res) => {
+        if (res.data) {
+          setBreadcrumbs(res.data);
+        }
+        else {
+          setBreadcrumbs([]);
+        }
+      });
+    }
+
     if (isLoaded && user) {
       executeAsync({ userId: user.id }).then((res) => {
         setJoinedCommunities(res.data ?? []);
       });
     }
+    breadcrumbAction
   }, [isLoaded, user]);
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem>
+        <BreadcrumbItem onClick={() => setBreadcrumbs([])}>
           <BreadcrumbLink asChild>
             <Link href={`/resources/${communityId}`}>
               <DropdownMenu>
@@ -91,7 +111,7 @@ export default function ResourcesBreadCrumbs() {
             <BreadcrumbSeparator>
               <SlashIcon />
             </BreadcrumbSeparator>
-            <BreadcrumbItem>
+            <BreadcrumbItem onClick={() => truncateBreadcrumb(folder.id)}>
               <BreadcrumbLink asChild>
                 <Link href={`/resources/${communityId}/${folder.id}`}>
                   {folder.name}

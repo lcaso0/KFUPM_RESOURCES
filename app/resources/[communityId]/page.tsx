@@ -30,7 +30,6 @@ export default async function CommunityPage({ params }: Params) {
   return (
     <>
       <BreadcrumbUpdater 
-        breadcrumbs={[]} 
         communityName={community.name} 
         communityId={community.id} 
       />

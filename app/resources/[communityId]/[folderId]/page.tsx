@@ -1,11 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import db from "@/db";
 import { folders } from "@/db/schema";
-import { getBreadcrumb } from "@/lib/functions";
-import { eq } from "drizzle-orm";
-import { ChevronRight, FileText, Folder as FolderIcon } from "lucide-react";
-import Link from "next/link";
+// import { getBreadcrumb } from "@/lib/functions";
+import { and, eq } from "drizzle-orm";
+import { Folder as FolderIcon } from "lucide-react";
 import BreadcrumbUpdater from "../components/BreadcrumbUpdater";
+import FolderCard from "../components/FolderCard";
+import ResourceCard from "../components/ResourceCard";
 
 interface Params {
   params: Promise<{ communityId: string; folderId: string }>;
@@ -16,7 +16,7 @@ export default async function FolderPage({ params }: Params) {
 
   // Fetch the current folder
   const currentFolder = await db.query.folders.findFirst({
-    where: eq(folders.id, folderId),
+    where: and(eq(folders.id, folderId), eq(folders.communityId, communityId)),
     with: {
       community: true,
       // parentFolder: true,
@@ -33,14 +33,14 @@ export default async function FolderPage({ params }: Params) {
   const folderResources = currentFolder.resources;
 
   // Breadcrumbs
-  const breadcrumbs = await getBreadcrumb(currentFolder.id);
+  // const breadcrumbs = await getBreadcrumb(currentFolder.id);
 
   return (
     <div className="bg-background">
       <BreadcrumbUpdater
-        breadcrumbs={breadcrumbs}
         communityName={currentFolder.community.name}
         communityId={currentFolder.community.id}
+        folderId={currentFolder.id}
       />
       <div className="container mx-auto px-6 py-8">
         {/* Header Section */}
@@ -65,30 +65,11 @@ export default async function FolderPage({ params }: Params) {
           {subFolders.length > 0 && (
             <>
               {subFolders.map((folder) => (
-                <Link
+                <FolderCard
                   key={folder.id}
-                  href={`/resources/${communityId}/${folder.id}`}
-                  className="group"
-                >
-                  <Card className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-primary/50 hover:cursor-pointer flex flex-col justify-between">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between">
-                        <div className="p-2 bg-primary/10 rounded-lg">
-                          <FolderIcon className="h-8 w-8 text-primary" />
-                        </div>
-                        <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardTitle className="text-lg font-semibold text-foreground mb-2">
-                        {folder.title}
-                      </CardTitle>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {folder.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
+                  communityId={currentFolder.communityId}
+                  folder={folder}
+                />
               ))}
             </>
           )}
@@ -97,27 +78,7 @@ export default async function FolderPage({ params }: Params) {
           {folderResources.length > 0 && (
             <>
               {folderResources.map((resource) => (
-                <Card
-                  className="h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border hover:border-secondary/50 dark:hover:border-blue-400/50 group hover:cursor-pointer"
-                  key={resource.id}
-                >
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between">
-                      <div className="p-2 bg-secondary/50 dark:bg-blue-400/50 rounded-lg">
-                        <FileText className="h-8 w-8 text-secondary-foreground" />
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-secondary dark:group-hover:text-blue-400/50 transition-colors" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <CardTitle className="text-lg font-semibold text-foreground mb-2">
-                      {resource.title}
-                    </CardTitle>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {resource.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <ResourceCard key={resource.id} resource={resource} />
               ))}
             </>
           )}

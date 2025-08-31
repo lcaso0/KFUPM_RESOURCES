@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Folder } from "@/lib/types";
 import {
@@ -10,6 +12,7 @@ import {
   Radiation,
 } from "lucide-react";
 import Link from "next/link";
+import { useBreadcrumb } from "../context/BreadcrumbContext";
 
 const getIconComponent = (course: string) => {
   switch (course.toUpperCase().replace(/[0-9]/g, "")) {
@@ -101,8 +104,13 @@ interface Props {
 }
 
 export default function CommunityCard({ folder }: Props) {
+  const { addBreadcrumb } = useBreadcrumb();
+
   return (
-    <Link href={`/resources/${folder.communityId}/${folder.id}`}>
+    <Link
+      href={`/resources/${folder.communityId}/${folder.id}`}
+      onClick={() => addBreadcrumb(folder)}
+    >
       <Card
         className={`h-full transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 border-border ${getHoverBorderColor(folder.name)} group hover:cursor-pointer flex flex-col justify-between`}
       >

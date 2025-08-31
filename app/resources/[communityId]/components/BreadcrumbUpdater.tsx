@@ -1,26 +1,35 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useBreadcrumb } from '../context/BreadcrumbContext';
+import { useEffect } from "react";
+import { useBreadcrumb } from "../context/BreadcrumbContext";
+import { useAction } from "next-safe-action/hooks";
+import { getBreadCrumb } from "@/lib/actions";
 
 interface BreadcrumbUpdaterProps {
-  breadcrumbs: Array<{ id: string; name: string }>;
   communityName: string;
   communityId: string;
+  folderId?: string;
 }
 
 export default function BreadcrumbUpdater({
-  breadcrumbs,
   communityName,
   communityId,
+  folderId,
 }: BreadcrumbUpdaterProps) {
-  const { setBreadcrumbs, setCommunityName, setCommunityId } = useBreadcrumb();
+  const { setCommunityName, setCommunityId, setFolderId } =
+    useBreadcrumb();
 
   useEffect(() => {
-    setBreadcrumbs(breadcrumbs);
+    setFolderId(folderId || "");
     setCommunityName(communityName);
     setCommunityId(communityId);
-  }, [breadcrumbs, communityName, communityId, setBreadcrumbs, setCommunityName, setCommunityId]);
+  }, [
+    communityName,
+    communityId,
+    setCommunityName,
+    setCommunityId,
+  ]);
 
   return null;
 }
+
