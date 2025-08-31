@@ -41,6 +41,7 @@ export const getBreadCrumb = actionClient
   .inputSchema(
     z.object({
       folderId: z.string().min(1, "Folder ID is required"),
+      communityId: z.string().min(1, "Community ID is required"),
     }),
   )
   .action(async ({ parsedInput }) => {
@@ -50,6 +51,7 @@ export const getBreadCrumb = actionClient
         SELECT id, folder_name, parent_id
         FROM folders
         WHERE id = ${parsedInput.folderId}
+        AND community_id = ${parsedInput.communityId}
 
         UNION ALL
 

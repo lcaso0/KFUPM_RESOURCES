@@ -4,7 +4,7 @@ import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Folder } from "@/lib/types";
 import { FolderIcon, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useBreadcrumb } from "../context/BreadcrumbContext";
+import { useBreadcrumbStore } from "@/stores/useBreadCrumb";
 
 interface Props {
   communityId: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function FolderCard({ communityId, folder }: Props) {
-  const { addBreadcrumb } = useBreadcrumb();
+  const { addBreadcrumb } = useBreadcrumbStore();
 
   return (
     <Link

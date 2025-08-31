@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Folder } from "@/lib/types";
+import { useBreadcrumbStore } from "@/stores/useBreadCrumb";
 import {
   BicepsFlexed,
   ChevronRight,
@@ -12,7 +13,6 @@ import {
   Radiation,
 } from "lucide-react";
 import Link from "next/link";
-import { useBreadcrumb } from "../context/BreadcrumbContext";
 
 const getIconComponent = (course: string) => {
   switch (course.toUpperCase().replace(/[0-9]/g, "")) {
@@ -104,7 +104,7 @@ interface Props {
 }
 
 export default function CommunityCard({ folder }: Props) {
-  const { addBreadcrumb } = useBreadcrumb();
+  const { addBreadcrumb } = useBreadcrumbStore();
 
   return (
     <Link

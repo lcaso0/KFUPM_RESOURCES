@@ -17,14 +17,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, DoorOpen, SlashIcon } from "lucide-react";
-import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
-import { useBreadcrumb } from "../context/BreadcrumbContext";
-import { useAction } from "next-safe-action/hooks";
 import { getBreadCrumb, getJoinedCommunities } from "@/lib/actions";
-import { useUser } from "@clerk/nextjs";
 import { PUBLIC_COMMUNITY_ID } from "@/lib/shared-variables";
+import { useBreadcrumbStore } from "@/stores/useBreadCrumb";
+import { useUser } from "@clerk/nextjs";
+import { ChevronDown, DoorOpen, SlashIcon } from "lucide-react";
+import { useAction } from "next-safe-action/hooks";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
 
 export default function ResourcesBreadCrumbs() {
   const {
@@ -34,22 +35,29 @@ export default function ResourcesBreadCrumbs() {
     folderId,
     truncateBreadcrumb,
     setBreadcrumbs,
-  } = useBreadcrumb();
+  } = useBreadcrumbStore();
   const { executeAsync } = useAction(getJoinedCommunities);
   const breadcrumbAction = useAction(getBreadCrumb);
   const { user, isLoaded } = useUser();
   const [joinedCommunities, setJoinedCommunities] = useState<any[]>([]);
+  const params = useParams();
 
   useEffect(() => {
-    if (folderId) {
-      breadcrumbAction.executeAsync({ folderId }).then((res) => {
-        if (res.data) {
-          setBreadcrumbs(res.data);
-        }
-        else {
-          setBreadcrumbs([]);
-        }
-      });
+    if (params.folderId && params.communityId) {
+      breadcrumbAction
+        .executeAsync({
+          folderId: params.folderId as string,
+          communityId: params.communityId as string,
+        })
+        .then((res) => {
+          if (res.data) {
+            setBreadcrumbs(res.data);
+          } else {
+            setBreadcrumbs([]);
+          }
+        });
+    } else {
+      setBreadcrumbs([]);
     }
 
     if (isLoaded && user) {
@@ -57,7 +65,7 @@ export default function ResourcesBreadCrumbs() {
         setJoinedCommunities(res.data ?? []);
       });
     }
-    breadcrumbAction
+    breadcrumbAction;
   }, [isLoaded, user]);
 
   return (
@@ -84,7 +92,11 @@ export default function ResourcesBreadCrumbs() {
                     </Link>
                     {joinedCommunities.length > 0 &&
                       joinedCommunities.map((c) => (
-                        <Link key={c.id} href={`/resources/${c.id}`}>
+                        <Link
+                          key={c.id}
+                          onClick={() => setBreadcrumbs([])}
+                          href={`/resources/${c.id}`}
+                        >
                           <DropdownMenuRadioItem value={c.id}>
                             {c.name}
                           </DropdownMenuRadioItem>

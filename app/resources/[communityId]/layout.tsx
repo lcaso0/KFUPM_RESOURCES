@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { UploadIcon } from "lucide-react";
 import Header from "./components/Header";
 import ResourcesBreadCrumbs from "./components/ResourcesBreadCrumbs";
-import { BreadcrumbProvider } from "./context/BreadcrumbContext";
 
 export default async function CommunityLayout({
   children,
@@ -11,7 +10,6 @@ export default async function CommunityLayout({
   children: React.ReactNode;
 }) {
   return (
-    <BreadcrumbProvider>
       <div className="min-h-screen bg-background ">
         <Navbar />
         <Header />
@@ -28,6 +26,5 @@ export default async function CommunityLayout({
         </div>
         <main>{children}</main>
       </div>
-    </BreadcrumbProvider>
   );
 }
