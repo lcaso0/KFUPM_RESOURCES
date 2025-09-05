@@ -10,7 +10,7 @@ export default async function CommunityLayout({
   children: React.ReactNode;
 }) {
   return (
-      <div className="min-h-screen bg-background ">
+      <div className="min-h-screen bg-background">
         <Navbar />
         <Header />
         <div className="container mx-auto px-6 mt-12 flex justify-between items-center flex-wrap gap-4">

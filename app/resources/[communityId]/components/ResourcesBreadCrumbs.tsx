@@ -32,7 +32,6 @@ export default function ResourcesBreadCrumbs() {
     breadcrumbs,
     communityName,
     communityId,
-    folderId,
     truncateBreadcrumb,
     setBreadcrumbs,
   } = useBreadcrumbStore();

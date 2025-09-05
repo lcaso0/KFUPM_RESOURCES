@@ -6,6 +6,7 @@ import { Folder as FolderIcon } from "lucide-react";
 import BreadcrumbUpdater from "../components/BreadcrumbUpdater";
 import FolderCard from "../components/FolderCard";
 import ResourceCard from "../components/ResourceCard";
+import { Separator } from "@/components/ui/separator";
 
 interface Params {
   params: Promise<{ communityId: string; folderId: string }>;
@@ -42,9 +43,9 @@ export default async function FolderPage({ params }: Params) {
         communityId={currentFolder.community.id}
         folderId={currentFolder.id}
       />
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-6">
         {/* Header Section */}
-        <div className="my-8">
+        <div className="mt-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">
             {currentFolder.title}
           </h1>
@@ -59,6 +60,8 @@ export default async function FolderPage({ params }: Params) {
             <span>{folderResources.length} resources</span>
           </div>
         </div>
+
+        <Separator className="my-4" />
 
         {/* Sub-folders Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
